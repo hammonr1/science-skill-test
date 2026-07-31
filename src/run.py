@@ -47,9 +47,12 @@ def main():
     if args.stage == "precheck":
         import diagnostics
         import headroom
+        import power
         headroom.run()
         print()
         diagnostics.run()
+        print()
+        power.run()
         return
 
     recipes = PILOT_RECIPES if args.stage == "pilot" else None

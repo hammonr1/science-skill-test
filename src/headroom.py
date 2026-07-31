@@ -117,7 +117,6 @@ def run():
         for name, fn in rankers.items():
             rng = random.Random(SEED + held)
             rrs = [reciprocal_rank(fn(d, rng, model), d.true_next) for d in evald]
-            t1 = [1.0 if fn(random.Random(SEED + held + 991), rng, model) else 0 for d in evald[:0]]
             rng2 = random.Random(SEED + held)
             tops = [1.0 if fn(d, rng2, model)[0] == d.true_next else 0.0 for d in evald]
             fold_scores[name].append(statistics.mean(rrs))

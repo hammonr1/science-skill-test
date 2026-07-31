@@ -11,6 +11,25 @@ The central modelling claim of this file: the *protocol* underdetermines the
 *execution*. The task graph is a partial order, so at most decision points
 several steps are simultaneously legal. Which one the operator actually picks is
 the residual -- the thing a skill could in principle predict.
+
+ID SPACES (this bit is load-bearing and was wrong in the first draft).
+CaptainCook4D uses two different step-id spaces:
+
+  * ``annotation_json/*``      -- GLOBAL step_idx, 1..350, unique across all 24
+                                  recipes. This is what recordings are written in.
+  * ``task_graphs/<recipe>``   -- RECIPE-LOCAL ids, 0=START, 1..N, N+1=END.
+
+They are NOT interchangeable: broccolistirfry's local [1] is global 250. Joining
+them by raw id silently produces empty step descriptions and a vacuous DAG, so
+everything here is normalised into the GLOBAL space, with the task graph
+projected onto it by exact step-text match. Step text is unique within every
+recipe's task graph, so the match is well defined.
+
+Three recipes (dressedupmeatballs, pinwheels, sautedmushrooms) legitimately
+REPEAT a step -- the same action twice in one recipe. The task graph gives each
+occurrence its own local node; the global index gives them one id. The
+projection is therefore many-to-one, and a repeated step can appear twice in one
+recording's sequence.
 """
 
 from __future__ import annotations
@@ -33,13 +52,12 @@ def _norm_recipe(name: str) -> str:
 
 @dataclass
 class Protocol:
-    """The written recipe: what the instructions actually specify."""
+    """The written recipe, in GLOBAL step-id space."""
 
     recipe: str
-    steps: dict[int, str]           # step_id -> canonical description
-    edges: list[tuple[int, int]]    # (prereq, dependent)
-    start_id: int
-    end_id: int
+    steps: dict[int, str]           # global step_idx -> canonical description
+    edges: list[tuple[int, int]]    # (prereq, dependent), global ids
+    roots: set[int]                 # steps with no prerequisite
 
     @property
     def predecessors(self) -> dict[int, set[int]]:
@@ -55,19 +73,17 @@ class Protocol:
 
     def recipe_text(self) -> str:
         """The protocol as a model would read it: steps plus ordering constraints."""
-        lines = [f"  [{sid}] {txt}" for sid, txt in sorted(self.steps.items())
-                 if sid not in (self.start_id, self.end_id)]
+        lines = [f"  [{sid}] {txt}" for sid, txt in sorted(self.steps.items())]
         preds = self.predecessors
         cons = []
         for sid in sorted(self.steps):
-            if sid in (self.start_id, self.end_id):
-                continue
-            p = sorted(x for x in preds[sid] if x != self.start_id)
+            p = sorted(preds[sid])
             if p:
                 cons.append(f"  [{sid}] requires: {', '.join('[%d]' % x for x in p)}")
         out = "STEPS:\n" + "\n".join(lines)
         if cons:
-            out += "\n\nORDERING CONSTRAINTS (from the recipe; anything not listed is free order):\n" + "\n".join(cons)
+            out += ("\n\nORDERING CONSTRAINTS (from the recipe; anything not listed "
+                    "is free order):\n" + "\n".join(cons))
         return out
 
 
@@ -79,8 +95,7 @@ class Execution:
     recipe: str
     person_id: int
     environment: int
-    step_ids: list[int]                     # in the order actually performed
-    descriptions: dict[int, str]
+    step_ids: list[int]                     # global ids, in the order performed
     durations: dict[int, float]
     has_errors: dict[int, bool]
 
@@ -98,43 +113,96 @@ class Decision:
     person_id: int
     index: int                  # position within the execution
     done: list[int]             # steps completed so far, in order
-    candidates: list[int]       # steps not yet performed
+    candidates: list[int]       # distinct steps not yet performed
     true_next: int
     ready: list[int]            # subset of candidates legal under the task graph
     meta: dict = field(default_factory=dict)
 
 
+def load_step_descriptions() -> dict[int, str]:
+    raw = json.load(open(os.path.join(DATA_DIR, "annotation_json", "step_idx_description.json")))
+    return {int(k): v for k, v in raw.items()}
+
+
+def _activity_global_ids() -> dict[str, set[int]]:
+    """recipe -> set of global step ids that recipe is made of."""
+    act = json.load(open(os.path.join(DATA_DIR, "annotation_json", "activity_idx_step_idx.json")))
+    comp = json.load(open(os.path.join(DATA_DIR, "annotation_json", "complete_step_annotations.json")))
+    aid_to_recipe = {r["activity_id"]: _norm_recipe(r["activity_name"]) for r in comp.values()}
+    out = {}
+    for aid, seq in act.items():
+        recipe = aid_to_recipe.get(int(aid))
+        if recipe:
+            out[recipe] = set(seq)
+    return out
+
+
 def load_protocols() -> dict[str, Protocol]:
+    """Task graphs projected from recipe-local ids into the global step space."""
+    desc = load_step_descriptions()
+    recipe_ids = _activity_global_ids()
     protocols = {}
+
     for path in sorted(glob.glob(os.path.join(DATA_DIR, "task_graphs", "*.json"))):
-        key = os.path.basename(path)[:-5]
+        recipe = os.path.basename(path)[:-5]
         g = json.load(open(path))
-        steps = {int(k): v for k, v in g["steps"].items()}
-        start = min(steps)
-        end = max(steps)
-        protocols[key] = Protocol(
-            recipe=key,
+        local = {int(k): v for k, v in g["steps"].items()}
+
+        # global ids belonging to this recipe, keyed by their text
+        gids = recipe_ids.get(recipe, set())
+        text_to_global = {desc[i]: i for i in gids}
+
+        # local node -> global id, by exact step text (many-to-one for repeats)
+        l2g, dropped = {}, []
+        for lid, txt in local.items():
+            if txt in ("START", "END"):
+                continue
+            gid = text_to_global.get(txt)
+            if gid is None:
+                dropped.append((lid, txt))
+            else:
+                l2g[lid] = gid
+        if dropped:
+            raise ValueError(f"{recipe}: task-graph steps absent from annotations: {dropped}")
+
+        # project edges, contracting START/END and dropping self-loops created
+        # by the many-to-one repeat mapping
+        edges = set()
+        for a, b in g["edges"]:
+            ga, gb = l2g.get(int(a)), l2g.get(int(b))
+            if ga is None or gb is None or ga == gb:
+                continue
+            edges.add((ga, gb))
+
+        steps = {i: desc[i] for i in sorted(l2g.values())}
+        preds = {b for _, b in edges}
+        protocols[recipe] = Protocol(
+            recipe=recipe,
             steps=steps,
-            edges=[(int(a), int(b)) for a, b in g["edges"]],
-            start_id=start,
-            end_id=end,
+            edges=sorted(edges),
+            roots={s for s in steps if s not in preds},
         )
     return protocols
 
 
-def load_executions() -> list[Execution]:
+def load_executions(protocols: dict[str, Protocol]) -> list[Execution]:
     raw = json.load(open(os.path.join(DATA_DIR, "annotation_json", "complete_step_annotations.json")))
     out = []
     for rec in raw.values():
-        steps = rec["steps"]
+        recipe = _norm_recipe(rec["activity_name"])
+        proto = protocols.get(recipe)
+        if proto is None:
+            continue
+        steps = [s for s in rec["steps"] if s["step_id"] in proto.steps]
+        if len(steps) < 2:
+            continue
         out.append(
             Execution(
                 recording_id=rec["recording_id"],
-                recipe=_norm_recipe(rec["activity_name"]),
+                recipe=recipe,
                 person_id=rec["person_id"],
                 environment=rec["environment"],
                 step_ids=[s["step_id"] for s in steps],
-                descriptions={s["step_id"]: s["description"] for s in steps},
                 durations={s["step_id"]: round(s["end_time"] - s["start_time"], 2) for s in steps},
                 has_errors={s["step_id"]: bool(s.get("has_errors")) for s in steps},
             )
@@ -143,18 +211,23 @@ def load_executions() -> list[Execution]:
 
 
 def build_decisions(ex: Execution, proto: Protocol, min_candidates: int = 2) -> list[Decision]:
-    """Every point in an execution where >= min_candidates steps remain.
+    """Every point in an execution where >= min_candidates distinct steps remain.
 
     Candidates are ALL remaining steps, not just task-graph-ready ones. Filtering
     to ready-only would bake the protocol into the harness and shrink the task;
     instead the protocol is given to every arm in the prompt, so all arms see the
     same constraints and the skill is the only thing that varies.
+
+    Repeated steps: a step performed twice stays in the candidate set until its
+    last occurrence, but candidates are DEDUPLICATED so the ranking target is
+    unambiguous.
     """
     decisions = []
     done: list[int] = []
     remaining = list(ex.step_ids)
     for i, sid in enumerate(ex.step_ids):
-        if len(remaining) >= min_candidates:
+        cands = sorted(set(remaining))
+        if len(cands) >= min_candidates:
             decisions.append(
                 Decision(
                     recording_id=ex.recording_id,
@@ -162,9 +235,9 @@ def build_decisions(ex: Execution, proto: Protocol, min_candidates: int = 2) -> 
                     person_id=ex.person_id,
                     index=i,
                     done=list(done),
-                    candidates=sorted(remaining),
+                    candidates=cands,
                     true_next=sid,
-                    ready=proto.ready({proto.start_id, *done}, set(remaining)),
+                    ready=proto.ready(set(done), set(cands)),
                 )
             )
         done.append(sid)
@@ -174,7 +247,7 @@ def build_decisions(ex: Execution, proto: Protocol, min_candidates: int = 2) -> 
 
 def load_all(min_candidates: int = 2):
     protocols = load_protocols()
-    executions = [e for e in load_executions() if e.recipe in protocols]
+    executions = load_executions(protocols)
     decisions = []
     for ex in executions:
         decisions.extend(build_decisions(ex, protocols[ex.recipe], min_candidates))
@@ -182,6 +255,8 @@ def load_all(min_candidates: int = 2):
 
 
 if __name__ == "__main__":
+    import statistics
+
     protocols, executions, decisions = load_all()
     persons = sorted({e.person_id for e in executions})
     print(f"annotations commit : {ANNOTATIONS_COMMIT}")
@@ -190,6 +265,9 @@ if __name__ == "__main__":
     print(f"participants       : {len(persons)} -> {persons}")
     print(f"error sessions     : {sum(e.is_error_session for e in executions)}")
     print(f"decision points    : {len(decisions)}")
-    import statistics
     print(f"mean candidates    : {statistics.mean(len(d.candidates) for d in decisions):.2f}")
     print(f"mean ready         : {statistics.mean(len(d.ready) for d in decisions):.2f}")
+    blank = sum(1 for p in protocols.values() for t in p.steps.values() if not t.strip())
+    print(f"blank step texts   : {blank}   (must be 0)")
+    cov = [len(set(e.step_ids) - set(protocols[e.recipe].steps)) for e in executions]
+    print(f"unmapped step ids  : {sum(cov)}   (must be 0)")
