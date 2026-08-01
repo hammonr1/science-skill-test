@@ -1,0 +1,205 @@
+{
+  "stage": "pilot",
+  "model": "claude-haiku-4-5-20251001",
+  "seed": 7,
+  "rank_fallback_seed": 4242,
+  "k_skills": 8,
+  "annotations_commit": "a8a920a3293c4db27099a20ddbe3a3a9be1283e3",
+  "recordings_dropped_unprojected": 0,
+  "prompt_identity_decisions_checked": 1117,
+  "system_prompt": "You are predicting how a person actually performs a cooking recipe in a real kitchen. Recipes leave much of the ordering unspecified; experienced cooks follow conventions that the written recipe does not state. Rank the remaining steps by how likely each is to be the very next step this person performs.",
+  "user_template": "RECIPE: {recipe}\n\n{protocol}\n\nSTEPS THIS PERSON HAS ALREADY COMPLETED, in order:\n{history}\n{skill_block}\nREMAINING STEPS (candidates for the next action):\n{candidates}\n\nRank ALL {n_candidates} remaining step IDs from most to least likely to be the NEXT step this person performs.\n\nOutput ONLY a comma-separated list of the step IDs in rank order, most likely first. No other text.\nExample format: 7, 3, 12, 1",
+  "cost_estimate": {
+    "calls": 4468,
+    "est_input_tokens": 4006736,
+    "est_output_tokens": 211352,
+    "est_usd": 5.06
+  },
+  "omission_diagnostics": {
+    "A": {
+      "n_responses": 1117,
+      "n_responses_with_omission": 15,
+      "total_omitted_ids": 22,
+      "mean_omitted_per_response": 0.019695613249776187,
+      "n_malformed": 0,
+      "frac_malformed": 0
+    },
+    "B": {
+      "n_responses": 1117,
+      "n_responses_with_omission": 5,
+      "total_omitted_ids": 6,
+      "mean_omitted_per_response": 0.005371530886302597,
+      "n_malformed": 0,
+      "frac_malformed": 0
+    },
+    "C": {
+      "n_responses": 1117,
+      "n_responses_with_omission": 8,
+      "total_omitted_ids": 8,
+      "mean_omitted_per_response": 0.007162041181736795,
+      "n_malformed": 0,
+      "frac_malformed": 0
+    },
+    "D": {
+      "n_responses": 1117,
+      "n_responses_with_omission": 14,
+      "total_omitted_ids": 14,
+      "mean_omitted_per_response": 0.012533572068039392,
+      "n_malformed": 0,
+      "frac_malformed": 0
+    }
+  },
+  "table": {
+    "A": {
+      "n": 1117,
+      "mrr": 0.6787463071594674,
+      "top1": 0.5058191584601611,
+      "fold_means": [
+        0.7400565808460545,
+        0.7175552842219509,
+        0.7044750954325423,
+        0.5994834068048354,
+        0.6414776908154391,
+        0.7593946105574012,
+        0.7912820512820513,
+        0.6183470254492982
+      ],
+      "ci": [
+        0.6517118133734343,
+        0.7396834232510244
+      ]
+    },
+    "B": {
+      "n": 1117,
+      "mrr": 0.6684632569156435,
+      "top1": 0.4959713518352731,
+      "fold_means": [
+        0.7377775246196299,
+        0.7014109347442681,
+        0.6851434814200772,
+        0.5912710875868771,
+        0.6150191603833988,
+        0.7397521728917078,
+        0.7994017094017094,
+        0.6206168831168831
+      ],
+      "ci": [
+        0.6403889395567727,
+        0.7326997283293916
+      ]
+    },
+    "C": {
+      "n": 1117,
+      "mrr": 0.693004631646082,
+      "top1": 0.5317815577439571,
+      "fold_means": [
+        0.760675046201362,
+        0.7504510921177587,
+        0.7063044323682621,
+        0.5887023492380635,
+        0.6762373755751239,
+        0.7537737456342107,
+        0.8011965811965812,
+        0.6475987554112554
+      ],
+      "ci": [
+        0.6638370503630506,
+        0.7533787937105406
+      ]
+    },
+    "D": {
+      "n": 1117,
+      "mrr": 0.6066786168173813,
+      "top1": 0.40465532676812893,
+      "fold_means": [
+        0.686208787963174,
+        0.641557919763048,
+        0.6298691064648512,
+        0.5369558351701209,
+        0.5558866813833702,
+        0.6992709486895533,
+        0.7294871794871794,
+        0.5238119834710744
+      ],
+      "ci": [
+        0.5748880419965763,
+        0.6746452753285757
+      ]
+    }
+  },
+  "contrasts": {
+    "C-B": {
+      "delta": 0.02431830294725831,
+      "ci": [
+        0.010643111152504258,
+        0.03904440241695868
+      ],
+      "p_raw": 0.0006,
+      "per_fold": {
+        "1": 0.02289752158173211,
+        "2": 0.04904015737349071,
+        "3": 0.02116095094818499,
+        "4": -0.0025687383488135363,
+        "5": 0.06121821519172513,
+        "6": 0.014021572742502977,
+        "7": 0.0017948717948717944,
+        "8": 0.026981872294372294
+      },
+      "p_holm": 0.0012,
+      "significant_holm": true
+    },
+    "C-D": {
+      "delta": 0.08523636691878081,
+      "ci": [
+        0.06693717680331196,
+        0.1043787915195171
+      ],
+      "p_raw": 0.0,
+      "per_fold": {
+        "1": 0.07446625823818806,
+        "2": 0.10889317235471083,
+        "3": 0.07643532590341101,
+        "4": 0.051746514067942645,
+        "5": 0.1203506941917538,
+        "6": 0.054502796944657414,
+        "7": 0.07170940170940171,
+        "8": 0.12378677194018103
+      },
+      "p_holm": 0.0,
+      "significant_holm": true
+    },
+    "B-A": {
+      "delta": -0.010209848905627705,
+      "ci": [
+        -0.017809059644769802,
+        -0.0023480655965189673
+      ],
+      "p_raw": 0.0081,
+      "per_fold": {
+        "1": -0.002279056226424647,
+        "2": -0.016144349477682812,
+        "3": -0.019331614012465078,
+        "4": -0.008212319217958317,
+        "5": -0.026458530432040366,
+        "6": -0.01964243766569348,
+        "7": 0.00811965811965812,
+        "8": 0.0022698576675849414
+      },
+      "p_holm": 0.0081,
+      "significant_holm": true
+    }
+  },
+  "ceiling_statistical": 0.7711173420657781,
+  "cue_leakage_diagnostic": {
+    "n_cue_action_pairs": 5316,
+    "mean_jaccard_cue_vs_action": 0.10008744151315638,
+    "pairs_with_jaccard_over_0.5": 0.015237020316027089,
+    "lexical_attack_mrr": 0.45827773153403445,
+    "random_mrr_same_subset": 0.38344705911615135,
+    "lexical_attack_top1": 0.25157232704402516,
+    "conditional_lexical_mrr": 0.7333425480307647,
+    "conditional_protocol_mrr": 0.7149200230720434,
+    "marginal_lift_over_random": 0.0748306724178831,
+    "conditional_lift_over_protocol": 0.01842252495872132
+  }
+}

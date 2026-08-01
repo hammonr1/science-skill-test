@@ -1,0 +1,262 @@
+{
+  "stage": "pilot",
+  "model": "claude-haiku-4-5-20251001",
+  "annotations_commit": "a8a920a3293c4db27099a20ddbe3a3a9be1283e3",
+  "seed": 7,
+  "rank_fallback_seed": 4242,
+  "k_skills": 8,
+  "metric": "MRR of the true next step among all remaining steps",
+  "holdout": "leave-one-participant-out; skills authored from training participants only",
+  "bootstrap": {
+    "type": "paired cluster bootstrap, resampling participants",
+    "n_resamples": 10000,
+    "alpha": 0.05,
+    "correction": "Holm-Bonferroni across the 3 planned contrasts"
+  },
+  "per_arm": {
+    "A": {
+      "label": "no skill (baseline)",
+      "n_decision_points": 1117,
+      "mrr": 0.6787463071594674,
+      "top1": 0.5058191584601611,
+      "mrr_ci95_participant_bootstrap": [
+        0.6517118133734343,
+        0.7396834232510244
+      ],
+      "per_fold_mrr": {
+        "1": 0.7400565808460545,
+        "2": 0.7175552842219509,
+        "3": 0.7044750954325423,
+        "4": 0.5994834068048354,
+        "5": 0.6414776908154391,
+        "6": 0.7593946105574012,
+        "7": 0.7912820512820513,
+        "8": 0.6183470254492982
+      }
+    },
+    "B": {
+      "label": "flat advice",
+      "n_decision_points": 1117,
+      "mrr": 0.6684632569156435,
+      "top1": 0.4959713518352731,
+      "mrr_ci95_participant_bootstrap": [
+        0.6403889395567727,
+        0.7326997283293916
+      ],
+      "per_fold_mrr": {
+        "1": 0.7377775246196299,
+        "2": 0.7014109347442681,
+        "3": 0.6851434814200772,
+        "4": 0.5912710875868771,
+        "5": 0.6150191603833988,
+        "6": 0.7397521728917078,
+        "7": 0.7994017094017094,
+        "8": 0.6206168831168831
+      }
+    },
+    "C": {
+      "label": "cue-conditioned",
+      "n_decision_points": 1117,
+      "mrr": 0.693004631646082,
+      "top1": 0.5317815577439571,
+      "mrr_ci95_participant_bootstrap": [
+        0.6638370503630506,
+        0.7533787937105406
+      ],
+      "per_fold_mrr": {
+        "1": 0.760675046201362,
+        "2": 0.7504510921177587,
+        "3": 0.7063044323682621,
+        "4": 0.5887023492380635,
+        "5": 0.6762373755751239,
+        "6": 0.7537737456342107,
+        "7": 0.8011965811965812,
+        "8": 0.6475987554112554
+      }
+    },
+    "D": {
+      "label": "scrambled cue (control)",
+      "n_decision_points": 1117,
+      "mrr": 0.6066786168173813,
+      "top1": 0.40465532676812893,
+      "mrr_ci95_participant_bootstrap": [
+        0.5748880419965763,
+        0.6746452753285757
+      ],
+      "per_fold_mrr": {
+        "1": 0.686208787963174,
+        "2": 0.641557919763048,
+        "3": 0.6298691064648512,
+        "4": 0.5369558351701209,
+        "5": 0.5558866813833702,
+        "6": 0.6992709486895533,
+        "7": 0.7294871794871794,
+        "8": 0.5238119834710744
+      }
+    }
+  },
+  "contrasts": {
+    "C-B": {
+      "arms": [
+        "C",
+        "B"
+      ],
+      "description": "cue-conditioned  minus  flat advice",
+      "point_estimate_delta_mrr": 0.02431830294725831,
+      "ci95": [
+        0.010643111152504258,
+        0.03904440241695868
+      ],
+      "per_fold_delta": {
+        "1": 0.02289752158173211,
+        "2": 0.04904015737349071,
+        "3": 0.02116095094818499,
+        "4": -0.0025687383488135363,
+        "5": 0.06121821519172513,
+        "6": 0.014021572742502977,
+        "7": 0.0017948717948717944,
+        "8": 0.026981872294372294
+      },
+      "n_folds": 8,
+      "n_paired_decision_points": 1117,
+      "n_paired_decision_points_per_fold": {
+        "1": 171,
+        "2": 117,
+        "3": 141,
+        "4": 210,
+        "5": 151,
+        "6": 86,
+        "7": 65,
+        "8": 176
+      },
+      "p_raw": 0.0006,
+      "p_holm": 0.0012,
+      "significant_holm_alpha05": true
+    },
+    "C-D": {
+      "arms": [
+        "C",
+        "D"
+      ],
+      "description": "cue-conditioned  minus  scrambled cue (control)",
+      "point_estimate_delta_mrr": 0.08523636691878081,
+      "ci95": [
+        0.06693717680331196,
+        0.1043787915195171
+      ],
+      "per_fold_delta": {
+        "1": 0.07446625823818806,
+        "2": 0.10889317235471083,
+        "3": 0.07643532590341101,
+        "4": 0.051746514067942645,
+        "5": 0.1203506941917538,
+        "6": 0.054502796944657414,
+        "7": 0.07170940170940171,
+        "8": 0.12378677194018103
+      },
+      "n_folds": 8,
+      "n_paired_decision_points": 1117,
+      "n_paired_decision_points_per_fold": {
+        "1": 171,
+        "2": 117,
+        "3": 141,
+        "4": 210,
+        "5": 151,
+        "6": 86,
+        "7": 65,
+        "8": 176
+      },
+      "p_raw": 0.0,
+      "p_holm": 0.0,
+      "significant_holm_alpha05": true
+    },
+    "B-A": {
+      "arms": [
+        "B",
+        "A"
+      ],
+      "description": "flat advice  minus  no skill (baseline)",
+      "point_estimate_delta_mrr": -0.010209848905627705,
+      "ci95": [
+        -0.017809059644769802,
+        -0.0023480655965189673
+      ],
+      "per_fold_delta": {
+        "1": -0.002279056226424647,
+        "2": -0.016144349477682812,
+        "3": -0.019331614012465078,
+        "4": -0.008212319217958317,
+        "5": -0.026458530432040366,
+        "6": -0.01964243766569348,
+        "7": 0.00811965811965812,
+        "8": 0.0022698576675849414
+      },
+      "n_folds": 8,
+      "n_paired_decision_points": 1117,
+      "n_paired_decision_points_per_fold": {
+        "1": 171,
+        "2": 117,
+        "3": 141,
+        "4": 210,
+        "5": 151,
+        "6": 86,
+        "7": 65,
+        "8": 176
+      },
+      "p_raw": 0.0081,
+      "p_holm": 0.0081,
+      "significant_holm_alpha05": true
+    }
+  },
+  "omission_diagnostics": {
+    "A": {
+      "n_responses": 1117,
+      "n_responses_with_omission": 15,
+      "total_omitted_ids": 22,
+      "mean_omitted_per_response": 0.019695613249776187,
+      "n_malformed": 0,
+      "frac_malformed": 0
+    },
+    "B": {
+      "n_responses": 1117,
+      "n_responses_with_omission": 5,
+      "total_omitted_ids": 6,
+      "mean_omitted_per_response": 0.005371530886302597,
+      "n_malformed": 0,
+      "frac_malformed": 0
+    },
+    "C": {
+      "n_responses": 1117,
+      "n_responses_with_omission": 8,
+      "total_omitted_ids": 8,
+      "mean_omitted_per_response": 0.007162041181736795,
+      "n_malformed": 0,
+      "frac_malformed": 0
+    },
+    "D": {
+      "n_responses": 1117,
+      "n_responses_with_omission": 14,
+      "total_omitted_ids": 14,
+      "mean_omitted_per_response": 0.012533572068039392,
+      "n_malformed": 0,
+      "frac_malformed": 0
+    }
+  },
+  "cue_leakage_diagnostic": {
+    "n_cue_action_pairs": 5316,
+    "mean_jaccard_cue_vs_action": 0.10008744151315638,
+    "pairs_with_jaccard_over_0.5": 0.015237020316027089,
+    "lexical_attack_mrr": 0.45827773153403445,
+    "random_mrr_same_subset": 0.38344705911615135,
+    "lexical_attack_top1": 0.25157232704402516,
+    "conditional_lexical_mrr": 0.7333425480307647,
+    "conditional_protocol_mrr": 0.7149200230720434,
+    "marginal_lift_over_random": 0.0748306724178831,
+    "conditional_lift_over_protocol": 0.01842252495872132,
+    "interpretation": "marginal = lexical attack on cue text vs random; conditional = same attack on top of the task graph every arm already sees. The conditional value is the decision-relevant one, and it is comparable in size to the oracle K=8 skill effect (+0.0173), so a C-vs-B gap of that order is not safely attributable to cue conditioning."
+  },
+  "prompt_templates": {
+    "system": "You are predicting how a person actually performs a cooking recipe in a real kitchen. Recipes leave much of the ordering unspecified; experienced cooks follow conventions that the written recipe does not state. Rank the remaining steps by how likely each is to be the very next step this person performs.",
+    "user": "RECIPE: {recipe}\n\n{protocol}\n\nSTEPS THIS PERSON HAS ALREADY COMPLETED, in order:\n{history}\n{skill_block}\nREMAINING STEPS (candidates for the next action):\n{candidates}\n\nRank ALL {n_candidates} remaining step IDs from most to least likely to be the NEXT step this person performs.\n\nOutput ONLY a comma-separated list of the step IDs in rank order, most likely first. No other text.\nExample format: 7, 3, 12, 1"
+  }
+}
