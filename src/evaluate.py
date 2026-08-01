@@ -16,8 +16,10 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import random
 import re
 import sqlite3
+import statistics
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -26,6 +28,7 @@ from prompts import SYSTEM, build_user_prompt
 from skills import mine_residual, render_skill_block
 
 ARMS = ["A", "B", "C", "D"]
+RANK_SEED = 4242   # fixed; the omitted-id shuffle must not depend on arm or response
 ARM_LABEL = {
     "A": "no skill (baseline)",
     "B": "flat advice",
@@ -55,11 +58,19 @@ class Cache:
             self.conn.commit()
 
 
-def parse_ranking(text: str, candidates: list[int]) -> list[int]:
-    """Parse the model's comma-separated ranking; append anything it omitted.
+def parse_ranking(text: str, candidates: list[int], seed_key: str = "") -> tuple[list[int], dict]:
+    """Parse the model's comma-separated ranking; place anything it omitted.
 
-    Omissions are appended in their original order rather than dropped, so a
-    partial answer is scored fairly instead of crashing the run.
+    Omitted ids used to be appended in ``candidates`` order, which is
+    ``sorted(remaining)`` -- roughly canonical recipe order, and therefore
+    strongly correlated with the truth. That gave a degenerate or empty response
+    a large edge over chance, and because arms omit at different rates the bias
+    leaked straight into the arm contrasts.
+
+    The fallback is now arm-neutral: omitted ids are shuffled with a seed derived
+    only from the decision identity, never from the arm or the response, so every
+    arm receives the identical permutation for the same decision and the tail
+    carries no ordering information.
     """
     seen, out = set(), []
     for tok in re.findall(r"\d+", text or ""):
@@ -67,8 +78,17 @@ def parse_ranking(text: str, candidates: list[int]) -> list[int]:
         if v in candidates and v not in seen:
             seen.add(v)
             out.append(v)
-    out.extend(s for s in candidates if s not in seen)
-    return out
+    omitted = [s for s in candidates if s not in seen]
+    rng = random.Random(hashlib.sha256(f"{RANK_SEED}\x00{seed_key}".encode()).hexdigest())
+    rng.shuffle(omitted)
+    out.extend(omitted)
+    diag = {
+        "n_omitted": len(omitted),
+        "omitted_any": 1 if omitted else 0,
+        "malformed": 1 if not out or len(seen) == 0 else 0,
+        "n_parsed": len(seen),
+    }
+    return out, diag
 
 
 def call_model(client, model, system, user, cache, max_retries=5):
@@ -145,7 +165,10 @@ def run_jobs(jobs, model, workers=8, verbose=True):
 
     def work(job):
         text, cached = call_model(client, model, SYSTEM, job["user"], cache)
-        ranking = parse_ranking(text, job["candidates"])
+        # seed key is the DECISION identity only -- never the arm, never the
+        # response -- so the omitted-id permutation is identical across arms
+        seed_key = f"{job['recording_id']}\x00{job['index']}"
+        ranking, diag = parse_ranking(text, job["candidates"], seed_key)
         rank = ranking.index(job["true_next"]) + 1
         with lock:
             done[0] += 1
@@ -156,11 +179,60 @@ def run_jobs(jobs, model, workers=8, verbose=True):
             "recording_id": job["recording_id"], "index": job["index"],
             "n_candidates": job["n_candidates"], "rank": rank,
             "rr": 1.0 / rank, "top1": 1.0 if rank == 1 else 0.0, "cached": cached,
-            "raw": text.strip()[:120],
+            "raw": text.strip()[:120], **diag,
         }
 
     with ThreadPoolExecutor(max_workers=workers) as ex:
         return list(ex.map(work, jobs))
+
+
+def omission_diagnostics(rows):
+    """Per-arm parse health. Differential omission across arms is a confound, so
+    these numbers ship in the results file rather than being spot-checked."""
+    out = {}
+    for arm in ARMS:
+        rs = [r for r in rows if r["arm"] == arm]
+        if not rs:
+            continue
+        out[arm] = {
+            "n_responses": len(rs),
+            "n_responses_with_omission": sum(r["omitted_any"] for r in rs),
+            "total_omitted_ids": sum(r["n_omitted"] for r in rs),
+            "mean_omitted_per_response": statistics.mean(r["n_omitted"] for r in rs),
+            "n_malformed": sum(r["malformed"] for r in rs),
+            "frac_malformed": statistics.mean(r["malformed"] for r in rs),
+        }
+    return out
+
+
+def assert_prompts_differ_only_in_skill_block(jobs):
+    """Byte-level check that arms are identical apart from the skill block.
+
+    Groups jobs by decision identity and strips each arm's skill block out of the
+    prompt; the residue must be byte-identical across all four arms. Asserted in
+    code so a template edit cannot silently desynchronise the arms.
+    """
+    by_decision = {}
+    for j in jobs:
+        by_decision.setdefault((j["fold"], j["recording_id"], j["index"]), {})[j["arm"]] = j
+
+    anchor = "REMAINING STEPS (candidates for the next action):"
+    checked = 0
+    for key, arms in by_decision.items():
+        residues = {}
+        for arm, j in arms.items():
+            u = j["user"]
+            tail = u[u.index(anchor):]
+            cut = u.index("PRACTITIONER TIPS") if "PRACTITIONER TIPS" in u else u.index(anchor)
+            # rstrip normalises the blank line that Arm A lacks a skill block for
+            residues[arm] = u[:cut].rstrip() + "\n" + tail
+        distinct = set(residues.values())
+        assert len(distinct) == 1, (
+            f"arms differ outside the skill block at {key}: "
+            f"{len(distinct)} distinct residues across arms {sorted(residues)}"
+        )
+        checked += 1
+    return checked
 
 
 def estimate_cost(jobs, model):

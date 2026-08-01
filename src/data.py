@@ -185,16 +185,40 @@ def load_protocols() -> dict[str, Protocol]:
     return protocols
 
 
-def load_executions(protocols: dict[str, Protocol]) -> list[Execution]:
+class UnprojectedStepError(RuntimeError):
+    """Raised when a recording contains a step absent from its projected protocol."""
+
+
+def load_executions(protocols: dict[str, Protocol],
+                    allow_dropped: int = 0) -> list[Execution]:
+    """Load recordings, dropping any whose steps do not fully project.
+
+    POLICY (confirmed, Gate 2): if a recording contains a step that does not
+    project into the protocol's global id space, the WHOLE RECORDING is dropped
+    -- never the individual step. Dropping an interior step would silently splice
+    its neighbours together and fabricate a (cue -> action) transition that never
+    happened, corrupting exactly the quantity this experiment mines.
+
+    The policy is asserted rather than merely available: ``allow_dropped``
+    defaults to 0, so if the data ever stops projecting cleanly this raises
+    instead of quietly shrinking the sample. It must stay visible.
+    """
     raw = json.load(open(os.path.join(DATA_DIR, "annotation_json", "complete_step_annotations.json")))
-    out = []
+    out, dropped = [], []
     for rec in raw.values():
         recipe = _norm_recipe(rec["activity_name"])
         proto = protocols.get(recipe)
         if proto is None:
             continue
-        steps = [s for s in rec["steps"] if s["step_id"] in proto.steps]
+        bad = [s["step_id"] for s in rec["steps"] if s["step_id"] not in proto.steps]
+        if bad:
+            dropped.append({"recording_id": rec["recording_id"], "recipe": recipe,
+                            "unprojected_step_ids": sorted(set(bad))})
+            continue
+        steps = rec["steps"]
         if len(steps) < 2:
+            dropped.append({"recording_id": rec["recording_id"], "recipe": recipe,
+                            "reason": "fewer than 2 steps"})
             continue
         out.append(
             Execution(
@@ -207,6 +231,14 @@ def load_executions(protocols: dict[str, Protocol]) -> list[Execution]:
                 has_errors={s["step_id"]: bool(s.get("has_errors")) for s in steps},
             )
         )
+
+    if len(dropped) > allow_dropped:
+        raise UnprojectedStepError(
+            f"{len(dropped)} recording(s) dropped for unprojected steps, "
+            f"allow_dropped={allow_dropped}. The projection has regressed or the "
+            f"pinned annotation release changed. Details: {dropped[:5]}"
+        )
+    load_executions.dropped = dropped
     return sorted(out, key=lambda e: e.recording_id)
 
 

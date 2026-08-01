@@ -16,8 +16,9 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from data import ANNOTATIONS_COMMIT, load_all
-from evaluate import ARM_LABEL, build_jobs, estimate_cost, run_jobs
+from data import ANNOTATIONS_COMMIT, load_all, load_executions
+from evaluate import (ARM_LABEL, RANK_SEED, assert_prompts_differ_only_in_skill_block,
+                      build_jobs, estimate_cost, omission_diagnostics, run_jobs)
 from prompts import SYSTEM, USER_TEMPLATE
 from stats import format_report, summarize
 
@@ -59,6 +60,12 @@ def main():
     jobs = build_jobs(protocols, executions, decisions, recipes=recipes,
                       k_skills=args.k_skills, seed=SEED)
 
+    # Gate 6 hygiene, asserted in code rather than inspected: the four arms must
+    # be byte-identical outside the skill block, and one model serves all arms.
+    n_checked = assert_prompts_differ_only_in_skill_block(jobs)
+    print(f"prompt-identity assertion passed over {n_checked} decisions x 4 arms")
+    assert len({j["arm"] for j in jobs}) == 4, "expected exactly four arms"
+
     est = estimate_cost(jobs, args.model)
     print(f"\nstage={args.stage} model={args.model} k_skills={args.k_skills}")
     print(f"cost estimate: {est['calls']} calls | ~{est['est_input_tokens']:,} in / "
@@ -69,6 +76,14 @@ def main():
 
     rows = run_jobs(jobs, args.model, workers=args.workers)
     table, contrasts = summarize(rows)
+    omissions = omission_diagnostics(rows)
+
+    print("\nPARSE HEALTH (differential omission across arms is a confound)")
+    print(f"{'arm':<5}{'responses':>11}{'with omission':>15}{'mean omitted':>14}"
+          f"{'malformed':>11}")
+    for arm, o in omissions.items():
+        print(f"{arm:<5}{o['n_responses']:>11}{o['n_responses_with_omission']:>15}"
+              f"{o['mean_omitted_per_response']:>14.4f}{o['n_malformed']:>11}")
 
     hp = "results/headroom.json"
     ceiling = None
@@ -81,9 +96,12 @@ def main():
     json.dump(
         {
             "stage": args.stage, "model": args.model, "seed": SEED,
+            "rank_fallback_seed": RANK_SEED,
             "k_skills": args.k_skills, "annotations_commit": ANNOTATIONS_COMMIT,
+            "recordings_dropped_unprojected": len(getattr(load_executions, "dropped", [])),
+            "prompt_identity_decisions_checked": n_checked,
             "system_prompt": SYSTEM, "user_template": USER_TEMPLATE,
-            "cost_estimate": est,
+            "cost_estimate": est, "omission_diagnostics": omissions,
             "table": {k: {kk: vv for kk, vv in v.items()} for k, v in table.items()},
             "contrasts": contrasts, "ceiling_statistical": ceiling,
         },
