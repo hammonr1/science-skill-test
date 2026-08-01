@@ -1,0 +1,16 @@
+{
+  "check1_all_steps_have_text": true,
+  "performed_step_instances": 5700,
+  "check2_frac_decisions_with_an_illegal_remaining_step": 0.9651797477884434,
+  "mean_illegal_remaining_per_decision": 6.4438170525127045,
+  "mean_candidates": 8.922642574816487,
+  "mean_ready": 2.4788255223037834,
+  "n_decisions": 5313,
+  "check3_projection": {
+    "performed_steps_total": 5700,
+    "unprojected_steps": 0,
+    "unprojected_by_recipe": {},
+    "recordings_touched": [],
+    "distinct_unprojected": []
+  }
+}
