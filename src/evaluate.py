@@ -7,7 +7,7 @@ costs nothing.
 
 Metric: MRR (mean reciprocal rank) of the true next step among all remaining
 steps, with top-1 accuracy logged alongside. MRR is the primary because candidate
-sets average ~9 and top-1 throws away most of the signal in each ranking; MRR
+sets average ~8.9 and top-1 throws away most of the signal in each ranking; MRR
 uses the whole ordering and so needs far fewer API calls for the same power.
 """
 
