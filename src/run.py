@@ -90,6 +90,15 @@ def main():
     if os.path.exists(hp):
         ceiling = statistics.mean(json.load(open(hp))["mrr"]["3_protocol_plus_residual"])
 
+    # The cue-leakage diagnostic travels WITH the contrasts, not in session output.
+    # Its conditional lift is the same magnitude as the whole oracle skill effect,
+    # so a reader holding only this file must be able to see it next to any C-vs-B
+    # gap rather than having to go find it in a separate diagnostics run.
+    leakage = None
+    dp = "results/diagnostics.json"
+    if os.path.exists(dp):
+        leakage = json.load(open(dp))["leakage"]
+
     report = format_report(table, contrasts, ARM_LABEL, ceiling=ceiling)
     print("\n" + report)
 
@@ -102,6 +111,7 @@ def main():
             "prompt_identity_decisions_checked": n_checked,
             "system_prompt": SYSTEM, "user_template": USER_TEMPLATE,
             "cost_estimate": est, "omission_diagnostics": omissions,
+            "cue_leakage_diagnostic": leakage,
             "table": {k: {kk: vv for kk, vv in v.items()} for k, v in table.items()},
             "contrasts": contrasts, "ceiling_statistical": ceiling,
         },

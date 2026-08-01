@@ -30,6 +30,26 @@ N_BOOT = 10000
 ALPHA = 0.05
 
 
+def _leakage():
+    """Ship the cue-leakage numbers inside final.json.
+
+    The conditional lift is the same magnitude as the entire oracle skill effect,
+    so anyone quoting a C-vs-B gap out of this file must see it in the same file.
+    """
+    p = "results/diagnostics.json"
+    if not os.path.exists(p):
+        return None
+    leak = json.load(open(p))["leakage"]
+    leak["interpretation"] = (
+        "marginal = lexical attack on cue text vs random; conditional = same attack "
+        "on top of the task graph every arm already sees. The conditional value is "
+        "the decision-relevant one, and it is comparable in size to the oracle K=8 "
+        "skill effect (+0.0173), so a C-vs-B gap of that order is not safely "
+        "attributable to cue conditioning."
+    )
+    return leak
+
+
 def paired_n(rows, arm_x, arm_y):
     """Decision points where both arms produced a ranking, per fold and total."""
     by_fold = collections.defaultdict(dict)
@@ -108,6 +128,7 @@ def build(rows, stage, model, k_skills, seed):
         "per_arm": per_arm,
         "contrasts": contrasts,
         "omission_diagnostics": omission_diagnostics(rows),
+        "cue_leakage_diagnostic": _leakage(),
         "prompt_templates": {"system": SYSTEM, "user": USER_TEMPLATE},
     }
 
