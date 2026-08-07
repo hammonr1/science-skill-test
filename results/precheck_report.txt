@@ -1,44 +1,44 @@
 CaptainCook4D annotations @ a8a920a3293c4db27099a20ddbe3a3a9be1283e3
-recipes 24 | executions 384 | participants 8 | decisions 5313
+recipes 24 | executions 384 | participants 8 | decisions 5029
 ==========================================================================
 HEADROOM / POWER ANALYSIS  (leave-one-participant-out, 8 folds)
 ==========================================================================
-decision points evaluated : 5313
-mean candidate-set size   : 8.92
-analytic random MRR       : 0.3783
+decision points evaluated : 5029
+mean candidate-set size   : 8.59
+analytic random MRR       : 0.3867
 
 level                              MRR      [min,max] over folds     top-1
-1_random                        0.3805   [0.3582,0.3967]        0.1701
-2_protocol_only                 0.7129   [0.6819,0.7630]        0.5378
-3_protocol_plus_residual        0.7711   [0.7279,0.8349]        0.6239
+1_random                        0.3858   [0.3575,0.4146]        0.1676
+2_protocol_only                 0.7353   [0.6990,0.7720]        0.5696
+3_protocol_plus_residual        0.7863   [0.7556,0.8352]        0.6439
 
 TRANSFERABLE RESIDUAL HEADROOM (level 3 - level 2), per held-out participant:
-  participant 1: +0.0711
-  participant 2: +0.0649
-  participant 3: +0.0460
-  participant 4: +0.0592
-  participant 5: +0.0484
-  participant 6: +0.0381
-  participant 7: +0.0665
-  participant 8: +0.0718
-  mean +0.0582   folds positive: 8/8
+  participant 1: +0.0686
+  participant 2: +0.0358
+  participant 3: +0.0566
+  participant 4: +0.0547
+  participant 5: +0.0349
+  participant 6: +0.0431
+  participant 7: +0.0452
+  participant 8: +0.0693
+  mean +0.0510   folds positive: 8/8
 
 wrote results/headroom.json
 
 ==========================================================================
 A. CUE-LEAKAGE GUARD
 ==========================================================================
-  n_cue_action_pairs                 5316
-  mean_jaccard_cue_vs_action         0.1001
-  pairs_with_jaccard_over_0.5        0.0152
-  lexical_attack_mrr                 0.4583
-  random_mrr_same_subset             0.3834
-  lexical_attack_top1                0.2516
-  conditional_lexical_mrr            0.7333
-  conditional_protocol_mrr           0.7149
+  n_cue_action_pairs                 5029
+  mean_jaccard_cue_vs_action         0.1029
+  pairs_with_jaccard_over_0.5        0.0159
+  lexical_attack_mrr                 0.4748
+  random_mrr_same_subset             0.3974
+  lexical_attack_top1                0.2721
+  conditional_lexical_mrr            0.7611
+  conditional_protocol_mrr           0.7473
 
-  marginal lift over random          : +0.0748
-  conditional lift over protocol-only: +0.0184
+  marginal lift over random          : +0.0774
+  conditional lift over protocol-only: +0.0138
   VERDICT (marginal)   : FAIL - cue text is lexically correlated with the action
   VERDICT (conditional): PASS - adds nothing over the protocol every arm sees
 
@@ -46,12 +46,12 @@ A. CUE-LEAKAGE GUARD
 B. SKILL-BUDGET CURVE (how much headroom survives compression)
 ==========================================================================
   K rules/recipe           MRR   lift over protocol-only
-  3                     0.7225               +0.0096
-  5                     0.7266               +0.0138
-  8                     0.7302               +0.0173
-  12                    0.7244               +0.0115
-  20                    0.7191               +0.0062
-  unlimited             0.7197               +0.0068
+  3                     0.7399               +0.0046
+  5                     0.7409               +0.0056
+  8                     0.7422               +0.0069
+  12                    0.7330               -0.0023
+  20                    0.7234               -0.0119
+  unlimited             0.7245               -0.0108
 
 wrote results/diagnostics.json
 
@@ -59,11 +59,11 @@ wrote results/diagnostics.json
 POWER / GO-NO-GO FOR THE LLM ARMS
 ==========================================================================
 K rules     protocol    +rules    effect   fold SD   MDE(n=8)  powered?
-3             0.7129    0.7225   +0.0096    0.0043     0.0043       YES
-5             0.7129    0.7266   +0.0138    0.0057     0.0056       YES
-8             0.7129    0.7302   +0.0173    0.0054     0.0054       YES
-12            0.7129    0.7244   +0.0115    0.0127     0.0126        NO
-20            0.7129    0.7191   +0.0062    0.0162     0.0160        NO
+3             0.7353    0.7399   +0.0046    0.0040     0.0040       YES
+5             0.7353    0.7409   +0.0056    0.0044     0.0043       YES
+8             0.7353    0.7422   +0.0069    0.0062     0.0061       YES
+12            0.7353    0.7330   -0.0023    0.0111     0.0110        NO
+20            0.7353    0.7234   -0.0119    0.0134     0.0133        NO
 
 READING: 'effect' is an ORACLE ceiling -- a perfect rule-follower.
 The LLM arms realise some fraction of it, and the C-vs-B contrast is

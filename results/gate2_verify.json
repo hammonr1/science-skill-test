@@ -1,11 +1,11 @@
 {
   "check1_all_steps_have_text": true,
-  "performed_step_instances": 5700,
-  "check2_frac_decisions_with_an_illegal_remaining_step": 0.9651797477884434,
-  "mean_illegal_remaining_per_decision": 6.4438170525127045,
-  "mean_candidates": 8.922642574816487,
-  "mean_ready": 2.4788255223037834,
-  "n_decisions": 5313,
+  "performed_step_instances": 5413,
+  "check2_frac_decisions_with_an_illegal_remaining_step": 0.9827003380393716,
+  "mean_illegal_remaining_per_decision": 6.33406243786041,
+  "mean_candidates": 8.587194273215351,
+  "mean_ready": 2.2531318353549414,
+  "n_decisions": 5029,
   "check3_projection": {
     "performed_steps_total": 5700,
     "unprojected_steps": 0,

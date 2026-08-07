@@ -215,10 +215,20 @@ def load_executions(protocols: dict[str, Protocol],
             dropped.append({"recording_id": rec["recording_id"], "recipe": recipe,
                             "unprojected_step_ids": sorted(set(bad))})
             continue
-        steps = rec["steps"]
+        # Two order fixes. The residual model and the next-step metric read
+        # nothing but step order, so both of these corrupt the quantity measured.
+        #   1. 287 steps carry start_time == -1: annotated as skipped, never
+        #      performed, yet occupying a position in the step array (141
+        #      recordings, 85 with the phantom interior). A transition into or
+        #      out of a step that never happened is fabricated.
+        #   2. In 72 recordings the array order is not chronological (83 adjacent
+        #      inversions); array order was being taken as execution order.
+        steps = [s for s in rec["steps"] if s["start_time"] != -1]
+        steps.sort(key=lambda s: s["start_time"])
+
         if len(steps) < 2:
             dropped.append({"recording_id": rec["recording_id"], "recipe": recipe,
-                            "reason": "fewer than 2 steps"})
+                            "reason": "fewer than 2 performed steps"})
             continue
         out.append(
             Execution(
