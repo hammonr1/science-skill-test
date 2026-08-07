@@ -1,0 +1,331 @@
+{
+  "stage": "pilot",
+  "seed": 20260731,
+  "metric": "MRR",
+  "split": "leave-one-participant-out over 8 participants",
+  "rule": "B -- whole-recording exclusion; no step-level splicing",
+  "slices": {
+    "as_published": {
+      "slice": "as_published",
+      "fixes_applied": false,
+      "n_recordings": 82,
+      "n_decisions": 1117,
+      "n_folds": 8,
+      "mrr_protocol_only": 0.65980538387033,
+      "mrr_protocol_plus_residual": 0.7444825232275043,
+      "headroom_mean": 0.08467713935717418,
+      "folds_positive": 8,
+      "per_fold": {
+        "1": {
+          "protocol": 0.6733013088276246,
+          "residual": 0.7380673906989696,
+          "delta": 0.06476608187134503,
+          "n_decisions": 171
+        },
+        "2": {
+          "protocol": 0.7193969610636277,
+          "residual": 0.7960826210826211,
+          "delta": 0.07668566001899335,
+          "n_decisions": 117
+        },
+        "3": {
+          "protocol": 0.6418017561634582,
+          "residual": 0.7165515335728102,
+          "delta": 0.07474977740935196,
+          "n_decisions": 141
+        },
+        "4": {
+          "protocol": 0.5777741702741702,
+          "residual": 0.6657678498749927,
+          "delta": 0.0879936796008225,
+          "n_decisions": 210
+        },
+        "5": {
+          "protocol": 0.6116971512666877,
+          "residual": 0.7220277514979502,
+          "delta": 0.11033060023126251,
+          "n_decisions": 151
+        },
+        "6": {
+          "protocol": 0.6530412094365583,
+          "residual": 0.7290836101882614,
+          "delta": 0.0760424007517031,
+          "n_decisions": 86
+        },
+        "7": {
+          "protocol": 0.7884615384615384,
+          "residual": 0.841025641025641,
+          "delta": 0.0525641025641026,
+          "n_decisions": 65
+        },
+        "8": {
+          "protocol": 0.6129689754689754,
+          "residual": 0.7472537878787878,
+          "delta": 0.13428481240981238,
+          "n_decisions": 176
+        }
+      },
+      "fix_stats": {}
+    },
+    "all": {
+      "slice": "all",
+      "fixes_applied": true,
+      "n_recordings": 82,
+      "n_decisions": 1063,
+      "n_folds": 8,
+      "mrr_protocol_only": 0.7124363778763784,
+      "mrr_protocol_plus_residual": 0.7643766746340641,
+      "headroom_mean": 0.051940296757685814,
+      "folds_positive": 8,
+      "per_fold": {
+        "1": {
+          "protocol": 0.7219618734678975,
+          "residual": 0.7439424364123159,
+          "delta": 0.021980562944418414,
+          "n_decisions": 166
+        },
+        "2": {
+          "protocol": 0.7428138528138528,
+          "residual": 0.7820454545454546,
+          "delta": 0.039231601731601784,
+          "n_decisions": 110
+        },
+        "3": {
+          "protocol": 0.6662824644117896,
+          "residual": 0.7472662549868432,
+          "delta": 0.08098379057505356,
+          "n_decisions": 136
+        },
+        "4": {
+          "protocol": 0.6421917588584255,
+          "residual": 0.705707872374539,
+          "delta": 0.06351611351611353,
+          "n_decisions": 198
+        },
+        "5": {
+          "protocol": 0.7176712176712177,
+          "residual": 0.7522144522144523,
+          "delta": 0.0345432345432346,
+          "n_decisions": 143
+        },
+        "6": {
+          "protocol": 0.7095818815331011,
+          "residual": 0.7479819976771196,
+          "delta": 0.038400116144018503,
+          "n_decisions": 82
+        },
+        "7": {
+          "protocol": 0.8203125,
+          "residual": 0.8450520833333334,
+          "delta": 0.02473958333333337,
+          "n_decisions": 64
+        },
+        "8": {
+          "protocol": 0.6786754742547425,
+          "residual": 0.7908028455284553,
+          "delta": 0.11212737127371275,
+          "n_decisions": 164
+        }
+      },
+      "fix_stats": {
+        "phantom_steps_dropped": 287,
+        "recordings_reordered": 72
+      }
+    },
+    "nonerror": {
+      "slice": "nonerror",
+      "fixes_applied": true,
+      "n_recordings": 34,
+      "n_decisions": 506,
+      "n_folds": 8,
+      "mrr_protocol_only": 0.7346768185975712,
+      "mrr_protocol_plus_residual": 0.7807636773173496,
+      "headroom_mean": 0.04608685871977841,
+      "folds_positive": 7,
+      "per_fold": {
+        "1": {
+          "protocol": 0.7595521541950113,
+          "residual": 0.7773809523809524,
+          "delta": 0.017828798185941075,
+          "n_decisions": 84
+        },
+        "2": {
+          "protocol": 0.6822344322344323,
+          "residual": 0.7186080586080587,
+          "delta": 0.0363736263736264,
+          "n_decisions": 65
+        },
+        "3": {
+          "protocol": 0.7450617283950617,
+          "residual": 0.7947530864197531,
+          "delta": 0.04969135802469138,
+          "n_decisions": 54
+        },
+        "4": {
+          "protocol": 0.7176790801790802,
+          "residual": 0.7714896214896215,
+          "delta": 0.053810541310541304,
+          "n_decisions": 78
+        },
+        "5": {
+          "protocol": 0.7398280423280423,
+          "residual": 0.7716666666666666,
+          "delta": 0.03183862433862428,
+          "n_decisions": 90
+        },
+        "6": {
+          "protocol": 0.7256756756756757,
+          "residual": 0.759009009009009,
+          "delta": 0.033333333333333326,
+          "n_decisions": 37
+        },
+        "7": {
+          "protocol": 0.8641025641025641,
+          "residual": 0.8397435897435898,
+          "delta": -0.024358974358974383,
+          "n_decisions": 39
+        },
+        "8": {
+          "protocol": 0.6432808716707021,
+          "residual": 0.813458434221146,
+          "delta": 0.17017756255044392,
+          "n_decisions": 59
+        }
+      },
+      "fix_stats": {
+        "phantom_steps_dropped": 287,
+        "recordings_reordered": 72
+      }
+    },
+    "error_only": {
+      "slice": "error_only",
+      "fixes_applied": true,
+      "n_recordings": 48,
+      "n_decisions": 557,
+      "n_folds": 8,
+      "mrr_protocol_only": 0.691697700577862,
+      "mrr_protocol_plus_residual": 0.7352701408703952,
+      "headroom_mean": 0.043572440292533196,
+      "folds_positive": 7,
+      "per_fold": {
+        "1": {
+          "protocol": 0.711125629113434,
+          "residual": 0.754979674796748,
+          "delta": 0.04385404568331397,
+          "n_decisions": 82
+        },
+        "2": {
+          "protocol": 0.7570370370370371,
+          "residual": 0.7942592592592592,
+          "delta": 0.03722222222222216,
+          "n_decisions": 45
+        },
+        "3": {
+          "protocol": 0.6129403794037941,
+          "residual": 0.7139135254988913,
+          "delta": 0.10097314609509722,
+          "n_decisions": 82
+        },
+        "4": {
+          "protocol": 0.5918584656084656,
+          "residual": 0.648154761904762,
+          "delta": 0.0562962962962964,
+          "n_decisions": 120
+        },
+        "5": {
+          "protocol": 0.6893081761006289,
+          "residual": 0.6893081761006289,
+          "delta": 0.0,
+          "n_decisions": 53
+        },
+        "6": {
+          "protocol": 0.6708024691358024,
+          "residual": 0.687962962962963,
+          "delta": 0.01716049382716056,
+          "n_decisions": 45
+        },
+        "7": {
+          "protocol": 0.798,
+          "residual": 0.86,
+          "delta": 0.061999999999999944,
+          "n_decisions": 25
+        },
+        "8": {
+          "protocol": 0.702509448223734,
+          "residual": 0.7335827664399093,
+          "delta": 0.031073318216175316,
+          "n_decisions": 105
+        }
+      },
+      "fix_stats": {
+        "phantom_steps_dropped": 287,
+        "recordings_reordered": 72
+      }
+    },
+    "sensitivity_C": {
+      "slice": "sensitivity_C",
+      "fixes_applied": true,
+      "n_recordings": 40,
+      "n_decisions": 575,
+      "n_folds": 8,
+      "mrr_protocol_only": 0.7319261761966799,
+      "mrr_protocol_plus_residual": 0.7709926170019789,
+      "headroom_mean": 0.03906644080529893,
+      "folds_positive": 7,
+      "per_fold": {
+        "1": {
+          "protocol": 0.7703246753246753,
+          "residual": 0.7746969696969697,
+          "delta": 0.004372294372294361,
+          "n_decisions": 110
+        },
+        "2": {
+          "protocol": 0.6822344322344323,
+          "residual": 0.722967032967033,
+          "delta": 0.040732600732600766,
+          "n_decisions": 65
+        },
+        "3": {
+          "protocol": 0.7450617283950617,
+          "residual": 0.7484567901234568,
+          "delta": 0.003395061728395099,
+          "n_decisions": 54
+        },
+        "4": {
+          "protocol": 0.6847988816738817,
+          "residual": 0.7510551948051948,
+          "delta": 0.06625631313131308,
+          "n_decisions": 88
+        },
+        "5": {
+          "protocol": 0.7398280423280423,
+          "residual": 0.7720370370370371,
+          "delta": 0.03220899470899474,
+          "n_decisions": 90
+        },
+        "6": {
+          "protocol": 0.7256756756756757,
+          "residual": 0.7837837837837838,
+          "delta": 0.05810810810810807,
+          "n_decisions": 37
+        },
+        "7": {
+          "protocol": 0.8378205128205128,
+          "residual": 0.8365384615384616,
+          "delta": -0.0012820512820512775,
+          "n_decisions": 52
+        },
+        "8": {
+          "protocol": 0.6696654611211573,
+          "residual": 0.7784056660638939,
+          "delta": 0.10874020494273662,
+          "n_decisions": 79
+        }
+      },
+      "fix_stats": {
+        "phantom_steps_dropped": 287,
+        "recordings_reordered": 72
+      }
+    }
+  }
+}
