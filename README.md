@@ -13,34 +13,39 @@ skills mined from the other seven, and measure whether the held-out operator's
 true next step gets easier to rank.
 
 Data: [CaptainCook4D](https://github.com/CaptainCook4D/annotations) at `a8a920a` —
-24 recipes, 8 participants, 384 recordings, 5,313 decision points, text only.
+24 recipes, 8 participants, 384 recordings, 5,029 decision points, text only.
 
 ## Result
 
-Pilot: 5 of 24 recipes, `claude-haiku-4-5`, 1,117 decisions per arm. MRR of the
+Pilot: 5 of 24 recipes, `claude-haiku-4-5`, 1,063 decisions per arm. MRR of the
 true next step, leave-one-participant-out.
 
-| arm | skill block | MRR | 95% CI | | contrast | Δ MRR | 95% CI | p (Holm) |
-|---|---|---|---|---|---|---|---|---|
-| A | none | 0.6787 | [0.6517, 0.7397] | | C − D | +0.0852 | [+0.0669, +0.1044] | 0.0000 |
-| B | action text only | 0.6685 | [0.6404, 0.7327] | | C − B | +0.0243 | [+0.0106, +0.0390] | 0.0012 |
-| C | cue → action | 0.6930 | [0.6638, 0.7534] | | B − A | −0.0102 | [−0.0178, −0.0023] | 0.0081 |
-| D | scrambled cue | 0.6067 | [0.5749, 0.6746] | | | | | |
+| arm | skill block | MRR | 95% CI | | contrast | Δ MRR | 95% CI | p (Holm) | folds + |
+|---|---|---|---|---|---|---|---|---|---|
+| A | none | 0.7115 | [0.6892, 0.7577] | | C − D | +0.0777 | [+0.0631, +0.0918] | 0.0000 | 8/8 |
+| B | action text only | 0.7092 | [0.6865, 0.7569] | | C − B | +0.0166 | [+0.0018, +0.0302] | 0.0428 | 6/8 |
+| C | cue → action | 0.7281 | [0.7067, 0.7669] | | B − A | −0.0019 | [−0.0036, +0.0000] | 0.0428 | 2/8 |
+| D | scrambled cue | 0.6474 | [0.6215, 0.6983] | | | | | | |
 
 Paired cluster bootstrap over participants, 10,000 resamples.
 
-C − D is the largest effect and positive in 8 of 8 folds (`results/final.json`).
-Pairing a cue with the right action beats pairing it with the wrong one.
+C − D is the effect to quote: positive in 8 of 8 folds, and the only contrast
+whose two arms contain identical text (`results/final.json`). Pairing a cue with
+the right action beats pairing it with the wrong one.
 
-C − A is +0.0143 — a difference of per-arm means, not a pre-registered contrast,
-so it carries no CI or correction. A lexical-similarity attack on cue text alone
-buys +0.0184 on top of the task graph every arm already sees
-(`results/diagnostics.json`). The confound exceeds the effect, so C − A is not
-evidence of cue conditioning. C − D is unaffected: C and D contain identical text.
+C − B is weak: just inside α=0.05 after correction, 6 of 8 folds, and at +0.0166
+above the +0.0069 an oracle following the same K=8 rules achieves
+(`results/power.json`) — so it is not measuring rule-following alone.
 
-B − A is negative. A list of action strings with no attached condition tells the
-model which steps are common without telling it when, and that displaces correct
-ranking.
+C − A is +0.0165, a difference of per-arm means rather than a pre-registered
+contrast, so it carries no CI or correction. A lexical attack on cue text alone
+buys +0.0138 over the task graph every arm sees (`results/diagnostics.json`) —
+the same order of magnitude, so C − A is not evidence of cue conditioning. C − D
+is immune, since C and D contain identical text.
+
+B − A is a rounding error whose interval touches zero. An earlier run put it at
+−0.0102 and read it as flat advice actively hurting; that vanished when two
+step-order bugs were fixed, and the reading is withdrawn.
 
 ## Design
 
@@ -58,7 +63,7 @@ pip install anthropic
 python src/run.py --stage precheck          # no API: headroom, leakage, power
 python src/run.py --stage pilot --dry-run   # cost estimate
 export ANTHROPIC_API_KEY=...
-python src/run.py --stage pilot             # 4,468 calls, ~$5.51 est.
+python src/run.py --stage pilot             # 4,252 calls, ~$5.18 est.
 python src/stop_conditions.py pilot
 python src/final_report.py pilot            # writes results/final.json
 ```
@@ -77,6 +82,7 @@ Responses cache to `results/cache.sqlite`; re-runs cost nothing.
 - `src/diagnostics.py` — cue-leakage guard, skill-budget curve.
 - `src/power.py` — oracle effect against minimum detectable effect at n=8.
 - `src/gate2_verify.py` — asserts the protocol/execution join is non-vacuous.
+- `src/error_slice.py` — re-runs the headroom analysis with induced errors excluded.
 - `src/stop_conditions.py` — pre-registered trip checks.
 - `src/final_report.py` — emits `results/final.json`.
 - `src/run.py` — entry point.
@@ -91,9 +97,25 @@ Skills are admitted by frequency, not lift. `mine_residual` keeps the K most
 common (cue → action) transitions per recipe, so a frequent but uninformative rule
 displaces a rare but diagnostic one.
 
-Leakage is unresolved. Cue and action text share vocabulary (mean Jaccard 0.100),
-and the +0.0184 conditional lift matches the oracle K=8 skill effect of +0.0173
-(`results/power.json`). Any contrast that does not hold cue text fixed inherits it.
+Leakage is unresolved. Cue and action text share vocabulary (mean Jaccard 0.103),
+and the +0.0138 conditional lift is twice the oracle K=8 skill effect of +0.0069
+(`results/power.json`). Any contrast that does not hold cue text fixed inherits
+it, which is why C − D is the quotable one.
+
+The design is barely powered. The +0.0069 oracle ceiling sits against a minimum
+detectable effect of 0.0061 at n=8 folds. A null here would not separate a false
+hypothesis from an underpowered test.
+
+Part of the residual is experimenter-induced. Participants were assigned to follow
+recipes or to induce errors from designed categories, and Order Error is the
+largest error class while the metric is step ordering. Excluding error recordings
+drops the transferable headroom from +0.0510 to +0.0353 and from 8/8 to 7/8 folds
+(`results/error_slice_full.json`) — the effect survives, inflated ~1.6×.
+
+Two step-order bugs were found after the first pilot and fixed: 287 steps
+annotated as skipped still held a sequence position, and 72 recordings were not
+chronological. Both fabricated transitions, which is all the residual model reads.
+Every figure above is post-fix; `git log` has the before and after.
 
 The full 24-recipe run has not been executed. All figures are the 5-recipe pilot.
 
