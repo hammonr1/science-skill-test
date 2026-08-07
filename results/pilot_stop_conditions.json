@@ -2,45 +2,45 @@
   "tripped": [],
   "notes": [
     "cond1 worst malformed ratio: A=0 vs B=0 -> 1.00",
-    "cond2 mean_omitted spread: 0.0143",
+    "cond2 mean_omitted spread: 0.0226",
     "cond3 malformed rates: A=0.0000%, B=0.0000%, C=0.0000%, D=0.0000%",
     "cond4 prompt-identity assertion passed: True",
-    "cond5 estimated spend: $5.51 (NOT measured -- usage blocks are not recorded by call_model; this is a chars/3.6 estimate)"
+    "cond5 estimated spend: $5.18 (NOT measured -- usage blocks are not recorded by call_model; this is a chars/3.6 estimate)"
   ],
   "omission": {
     "A": {
-      "n_responses": 1117,
-      "n_responses_with_omission": 15,
-      "total_omitted_ids": 22,
-      "mean_omitted_per_response": 0.019695613249776187,
+      "n_responses": 1063,
+      "n_responses_with_omission": 42,
+      "total_omitted_ids": 47,
+      "mean_omitted_per_response": 0.04421448730009407,
       "n_malformed": 0,
       "frac_malformed": 0
     },
     "B": {
-      "n_responses": 1117,
-      "n_responses_with_omission": 5,
-      "total_omitted_ids": 6,
-      "mean_omitted_per_response": 0.005371530886302597,
+      "n_responses": 1063,
+      "n_responses_with_omission": 38,
+      "total_omitted_ids": 48,
+      "mean_omitted_per_response": 0.045155221072436504,
       "n_malformed": 0,
       "frac_malformed": 0
     },
     "C": {
-      "n_responses": 1117,
-      "n_responses_with_omission": 8,
-      "total_omitted_ids": 8,
-      "mean_omitted_per_response": 0.007162041181736795,
+      "n_responses": 1063,
+      "n_responses_with_omission": 55,
+      "total_omitted_ids": 71,
+      "mean_omitted_per_response": 0.06679209783631232,
       "n_malformed": 0,
       "frac_malformed": 0
     },
     "D": {
-      "n_responses": 1117,
-      "n_responses_with_omission": 14,
-      "total_omitted_ids": 14,
-      "mean_omitted_per_response": 0.012533572068039392,
+      "n_responses": 1063,
+      "n_responses_with_omission": 51,
+      "total_omitted_ids": 68,
+      "mean_omitted_per_response": 0.06396989651928504,
       "n_malformed": 0,
       "frac_malformed": 0
     }
   },
-  "estimated_spend_usd": 5.51,
+  "estimated_spend_usd": 5.18,
   "spend_is_measured": false
 }

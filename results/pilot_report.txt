@@ -2,15 +2,15 @@
 RESULTS  (MRR of true next action; leave-one-participant-out)
 ==============================================================================
 arm   description                    MRR     95% CI (participants)    top-1
-A     no skill (baseline)         0.6787          [0.6517, 0.7397]   0.5058
-B     flat advice                 0.6685          [0.6404, 0.7327]   0.4960
-C     cue-conditioned             0.6930          [0.6638, 0.7534]   0.5318
-D     scrambled cue (control)     0.6067          [0.5749, 0.6746]   0.4047
---    ceiling (stat. residual)    0.7711                                   
+A     no skill (baseline)         0.7115          [0.6892, 0.7577]   0.5569
+B     flat advice                 0.7092          [0.6865, 0.7569]   0.5560
+C     cue-conditioned             0.7281          [0.7067, 0.7669]   0.5842
+D     scrambled cue (control)     0.6474          [0.6215, 0.6983]   0.4694
+--    ceiling (stat. residual)    0.7863                                   
 
 PLANNED CONTRASTS (paired on identical decision points,
 bootstrap over participants, Holm-corrected across 3 tests)
 contrast      delta MRR                  95% CI    p_raw   p_holm   sig
-C-B             +0.0243      [+0.0106, +0.0390]   0.0006   0.0012   YES
-C-D             +0.0852      [+0.0669, +0.1044]   0.0000   0.0000   YES
-B-A             -0.0102      [-0.0178, -0.0023]   0.0081   0.0081   YES
+C-B             +0.0166      [+0.0018, +0.0302]   0.0214   0.0428   YES
+C-D             +0.0777      [+0.0631, +0.0918]   0.0000   0.0000   YES
+B-A             -0.0019      [-0.0036, +0.0000]   0.0328   0.0428   YES
