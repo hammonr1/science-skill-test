@@ -1,0 +1,65 @@
+{
+  "stage": "stage2_dry_run",
+  "fold": 6,
+  "model": "claude-haiku-4-5-20251001",
+  "seed": 7,
+  "scoring": "covered points only (cue+target match), no support floor",
+  "underpowered": true,
+  "n_points": 92,
+  "n_positives": 23,
+  "base_rate": 0.25,
+  "per_arm": {
+    "A": {
+      "label": "no skill (baseline)",
+      "n": 91,
+      "brier": 0.1755967032967033,
+      "auroc": 0.6772068511198946,
+      "p_mean": 0.1946153846153846,
+      "p_sd": 0.05298443570852131,
+      "p_min": 0.15,
+      "p_max": 0.35,
+      "n_unparseable": 1
+    },
+    "B": {
+      "label": "flat advice",
+      "n": 91,
+      "brier": 0.18425934065934066,
+      "auroc": 0.5902503293807642,
+      "p_mean": 0.27692307692307694,
+      "p_sd": 0.09827051448473248,
+      "p_min": 0.15,
+      "p_max": 0.72,
+      "n_unparseable": 1
+    },
+    "C": {
+      "label": "cue-conditioned",
+      "n": 91,
+      "brier": 0.2163054945054945,
+      "auroc": 0.5395256916996047,
+      "p_mean": 0.3872527472527472,
+      "p_sd": 0.15044427491094453,
+      "p_min": 0.15,
+      "p_max": 0.72,
+      "n_unparseable": 1
+    },
+    "D": {
+      "label": "scrambled cue (control)",
+      "n": 91,
+      "brier": 0.2077098901098901,
+      "auroc": 0.5632411067193676,
+      "p_mean": 0.34835164835164834,
+      "p_sd": 0.14601570491075977,
+      "p_min": 0.15,
+      "p_max": 0.72,
+      "n_unparseable": 1
+    }
+  },
+  "brier_C_minus_D": 0.00859560439560439,
+  "brier_C_minus_A": 0.0407087912087912,
+  "brier_B_minus_A": 0.008662637362637365,
+  "baseline_brier_predict_base_rate": 0.1875,
+  "n_calls": 368,
+  "n_cached": 28,
+  "system_prompt": "You are predicting how a person performs a cooking recipe in a real kitchen. You will be told which step they are about to perform next. Estimate the probability that they will perform that step with an execution-quality error: a preparation, measurement, timing, technique, or temperature mistake. This is about HOW WELL the step is carried out, not about which step they choose.",
+  "user_template": "RECIPE: {recipe}\n\n{protocol}\n\nSTEPS THIS PERSON HAS ALREADY COMPLETED, in order:\n{history}\n{skill_block}\nTHE STEP THEY ARE ABOUT TO PERFORM NEXT:\n  [{target_id}] {target_text}\n\nSTEPS STILL REMAINING AFTER THIS ONE (listed in recipe order, not in the order they will be done):\n{remaining}\n\nWhat is the probability that this person performs the step above with an\nexecution-quality error (preparation, measurement, timing, technique, or temperature)?\n\nOutput ONLY an integer from 0 to 100. No other text.\nExample format: 35"
+}
