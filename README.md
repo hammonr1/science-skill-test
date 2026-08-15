@@ -1,73 +1,125 @@
-# Does a cue → action skill transfer better than flat advice?
+# Cue-conditioned skills vs. flat advice
 
-A four-arm test of whether representing a learned skill as a CUE → ACTION
-conditional makes an unseen operator's next action more predictable than
-representing the same content as flat advice.
+Tests whether writing a learned skill as a cue→action conditional ("when you have
+just finished X, do Y") makes an unseen operator's next action more predictable
+than the same action content with the cue field deleted.
 
-**Dataset:** [CaptainCook4D](https://github.com/CaptainCook4D/annotations)
-annotations, pinned at commit `a8a920a`. Text-level only — no video is needed or
-downloaded.
+The question resists a direct answer. A kitchen session cannot be re-run under a
+different skill, so the counterfactual — what this operator would have done given
+advice Z — is never observed. Each recording is one draw from one operator, so the
+skill's contribution cannot be recovered by comparing an execution to itself. The
+test is displaced onto a frozen model: hold one participant out, condition on
+skills mined from the other seven, and measure whether the held-out operator's
+true next step gets easier to rank.
 
-## The task
+Data: [CaptainCook4D](https://github.com/CaptainCook4D/annotations) at `a8a920a` —
+24 recipes, 8 participants, 384 recordings, 5,029 decision points, text only.
 
-CaptainCook4D's task graphs are *partial* orders: at a typical point in a recipe
-~8.7 of the ~9.1 remaining steps are legally performable. The written recipe
-therefore barely constrains ordering, and which step an operator actually does
-next is mostly convention the recipe never states. That gap is the residual a
-skill is supposed to capture.
+## Result
 
-At each decision point the frozen model sees the recipe (steps + ordering
-constraints), the steps completed so far, and all remaining steps, and ranks them.
-Metric: **MRR** of the true next step, with top-1 logged alongside.
+Pilot: 5 of 24 recipes, `claude-haiku-4-5`, 1,063 decisions per arm. MRR of the
+true next step, leave-one-participant-out.
 
-## Arms
+| arm | skill block | MRR | 95% CI | | contrast | Δ MRR | 95% CI | p (Holm) | folds + |
+|---|---|---|---|---|---|---|---|---|---|
+| A | none | 0.7115 | [0.6892, 0.7577] | | C − D | +0.0777 | [+0.0631, +0.0918] | 0.0000 | 8/8 |
+| B | action text only | 0.7092 | [0.6865, 0.7569] | | C − B | +0.0166 | [+0.0018, +0.0302] | 0.0428 | 6/8 |
+| C | cue → action | 0.7281 | [0.7067, 0.7669] | | B − A | −0.0019 | [−0.0036, +0.0000] | 0.0428 | 2/8 |
+| D | scrambled cue | 0.6474 | [0.6215, 0.6983] | | | | | | |
 
-| Arm | Skill block |
-|-----|-------------|
-| A | none (baseline) |
-| B | flat advice — action text only |
-| C | cue-conditioned — `When you have just finished <cue> → next do <action>` |
-| D | scrambled cue — cue from skill *j* on action from skill *i* (within-field derangement) |
+Paired cluster bootstrap over participants, 10,000 resamples.
 
-Arms B/C/D carry **identical action content**; only the representation differs.
-The residual is mined deterministically into (cue, action) pairs so the arms
-cannot differ in content — if a model free-wrote prose per arm, any C-vs-B gap
-would be uninterpretable.
+C − D is the effect to quote: positive in 8 of 8 folds, and the only contrast
+whose two arms contain identical text (`results/final.json`). Pairing a cue with
+the right action beats pairing it with the wrong one.
 
-## Hold-out
+C − B is weak: just inside α=0.05 after correction, 6 of 8 folds, and at +0.0166
+above the +0.0069 an oracle following the same K=8 rules achieves
+(`results/power.json`) — so it is not measuring rule-following alone.
 
-Leave-one-participant-out over all 8 participants. Skills are authored from the 7
-training participants; the 8th is only ever evaluated. `build_jobs` asserts no
-participant overlap in either direction.
+C − A is +0.0165, a difference of per-arm means rather than a pre-registered
+contrast, so it carries no CI or correction. A lexical attack on cue text alone
+buys +0.0138 over the task graph every arm sees (`results/diagnostics.json`) —
+the same order of magnitude, so C − A is not evidence of cue conditioning. C − D
+is immune, since C and D contain identical text.
 
-## Running
+B − A is a rounding error whose interval touches zero. An earlier run put it at
+−0.0102 and read it as flat advice actively hurting; that vanished when two
+step-order bugs were fixed, and the reading is withdrawn.
+
+## Design
+
+Arm D scrambles the cue field within the skill list — cue from skill *j* on the
+action from skill *i* — so C and D carry the same cues, the same actions, and the
+same line count, differing only in which cue goes with which action
+(`src/skills.py`). Arm B deletes the cue, removing the mapping rather than
+rearranging it, so C − B confounds representation with information content. C − D
+holds content fixed and varies only the pairing.
+
+## Reproduce
 
 ```bash
 pip install anthropic
-python src/run.py --stage precheck              # no API: power + leakage checks
-python src/run.py --stage pilot --dry-run       # cost estimate
-python src/run.py --stage pilot                 # 5 recipes,  ~4.5k calls
-python src/run.py --stage full                  # 24 recipes, ~21k calls
+python src/run.py --stage precheck          # no API: headroom, leakage, power
+python src/run.py --stage pilot --dry-run   # cost estimate
+export ANTHROPIC_API_KEY=...
+python src/run.py --stage pilot             # 4,252 calls, ~$5.18 est.
+python src/stop_conditions.py pilot
+python src/final_report.py pilot            # writes results/final.json
 ```
 
-Responses are cached in `results/cache.sqlite`, so runs are resumable and a
-re-run costs nothing. Temperature 0, seeds fixed, prompt templates logged
-verbatim into the results JSON.
+Temperature 0, fixed seeds, prompt templates logged into the results JSON.
+Responses cache to `results/cache.sqlite`; re-runs cost nothing.
 
-## Pre-registered checks (all pass, see `results/`)
+## Layout
 
-- **Power / headroom.** Residual statistics learned from training participants
-  lift held-out-participant MRR from 0.386 (recipe alone) to 0.712 — +0.326,
-  positive in 8/8 folds. There is a large operator-transferable residual to find.
-- **Cue-leakage guard.** Mean Jaccard overlap between cue text and action text is
-  0.003; no pair exceeds 0.5; a pure lexical-similarity attack on the cue scores
-  −0.001 vs random. A cue cannot reveal its action by surface form.
-- **Skill-budget curve.** At the K=8 rules/recipe the arms actually use, the
-  compressed residual is worth +0.147 MRR — the effect size the LLM arms are
-  powered to detect.
+- `src/data.py` — loads annotations; projects task graphs from recipe-local to global step ids.
+- `src/skills.py` — mines (cue, action) pairs; renders arms B, C, D.
+- `src/prompts.py` — the prompt template; only the skill block varies.
+- `src/evaluate.py` — job construction, model calls, response cache, rank parsing.
+- `src/stats.py` — paired cluster bootstrap, Holm correction.
+- `src/headroom.py` — non-LLM ceiling on the transferable residual.
+- `src/diagnostics.py` — cue-leakage guard, skill-budget curve.
+- `src/power.py` — oracle effect against minimum detectable effect at n=8.
+- `src/gate2_verify.py` — asserts the protocol/execution join is non-vacuous.
+- `src/error_slice.py` — re-runs the headroom analysis with induced errors excluded.
+- `src/stop_conditions.py` — pre-registered trip checks.
+- `src/final_report.py` — emits `results/final.json`.
+- `src/run.py` — entry point.
 
-## Known deviation from the original design
+## Limitations
 
-No human-written tips exist anywhere in CaptainCook4D, so the requested human
-ceiling arm is not constructible. `results/headroom.json` supplies a
-**statistical ceiling** instead (unlimited residual model, 0.712 MRR).
+Cooking is not a wet lab. The step vocabulary is closed and the task graph is
+supplied; a protocol whose steps cannot be enumerated in advance is a different
+problem.
+
+Skills are admitted by frequency, not lift. `mine_residual` keeps the K most
+common (cue → action) transitions per recipe, so a frequent but uninformative rule
+displaces a rare but diagnostic one.
+
+Leakage is unresolved. Cue and action text share vocabulary (mean Jaccard 0.103),
+and the +0.0138 conditional lift is twice the oracle K=8 skill effect of +0.0069
+(`results/power.json`). Any contrast that does not hold cue text fixed inherits
+it, which is why C − D is the quotable one.
+
+The design is barely powered. The +0.0069 oracle ceiling sits against a minimum
+detectable effect of 0.0061 at n=8 folds. A null here would not separate a false
+hypothesis from an underpowered test.
+
+Part of the residual is experimenter-induced. Participants were assigned to follow
+recipes or to induce errors from designed categories, and Order Error is the
+largest error class while the metric is step ordering. Excluding error recordings
+drops the transferable headroom from +0.0510 to +0.0353 and from 8/8 to 7/8 folds
+(`results/error_slice_full.json`) — the effect survives, inflated ~1.6×.
+
+Two step-order bugs were found after the first pilot and fixed: 287 steps
+annotated as skipped still held a sequence position, and 72 recordings were not
+chronological. Both fabricated transitions, which is all the residual model reads.
+Every figure above is post-fix; `git log` has the before and after.
+
+The full 24-recipe run has not been executed. All figures are the 5-recipe pilot.
+
+## License
+
+MIT (`LICENSE`), covering the code in `src/`. The CaptainCook4D annotations
+vendored under `data/` are redistributed under their upstream terms.

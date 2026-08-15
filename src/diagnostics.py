@@ -77,6 +77,32 @@ def cue_action_leakage(protocols, executions):
         rng2.shuffle(c)
         rr_rand.append(reciprocal_rank(c, d.true_next))
 
+    # The decision-relevant version of the same attack. Every arm already sees
+    # the task graph, so cue-text similarity only threatens the comparison if it
+    # adds signal ON TOP of the protocol. Ranking ready-steps-first with a
+    # lexical tie-break is compared against ready-first with a random tie-break.
+    rng3, rng4 = random.Random(SEED), random.Random(SEED)
+    rr_cond_lex, rr_cond_rand = [], []
+    for d in decisions:
+        if not d.done:
+            continue
+        proto = protocols[d.recipe]
+        cue_t = tokens(proto.steps.get(d.done[-1], ""))
+        ready = set(d.ready)
+
+        def sim(s):
+            ts = tokens(proto.steps.get(s, ""))
+            return len(cue_t & ts) / max(len(cue_t | ts), 1)
+
+        c = list(d.candidates)
+        rng3.shuffle(c)
+        rr_cond_lex.append(reciprocal_rank(
+            sorted(c, key=lambda s: (0 if s in ready else 1, -sim(s))), d.true_next))
+        c2 = list(d.candidates)
+        rng4.shuffle(c2)
+        rr_cond_rand.append(reciprocal_rank(
+            sorted(c2, key=lambda s: 0 if s in ready else 1), d.true_next))
+
     return {
         "n_cue_action_pairs": len(rows),
         "mean_jaccard_cue_vs_action": statistics.mean(jac),
@@ -84,6 +110,8 @@ def cue_action_leakage(protocols, executions):
         "lexical_attack_mrr": statistics.mean(rr_attack),
         "random_mrr_same_subset": statistics.mean(rr_rand),
         "lexical_attack_top1": statistics.mean(top1_attack),
+        "conditional_lexical_mrr": statistics.mean(rr_cond_lex),
+        "conditional_protocol_mrr": statistics.mean(rr_cond_rand),
     }
 
 
@@ -147,9 +175,15 @@ def run():
     for k, v in leak.items():
         print(f"  {k:<34} {v:.4f}" if isinstance(v, float) else f"  {k:<34} {v}")
     lift = leak["lexical_attack_mrr"] - leak["random_mrr_same_subset"]
-    print(f"\n  lexical-attack lift over random: {lift:+.4f}")
-    print("  VERDICT:", "PASS - cue text does not leak the action"
-          if lift < 0.03 else "FAIL - coarsen the cue")
+    cond = leak["conditional_lexical_mrr"] - leak["conditional_protocol_mrr"]
+    leak["marginal_lift_over_random"] = lift
+    leak["conditional_lift_over_protocol"] = cond
+    print(f"\n  marginal lift over random          : {lift:+.4f}")
+    print(f"  conditional lift over protocol-only: {cond:+.4f}")
+    print("  VERDICT (marginal)   :", "PASS" if lift < 0.03 else
+          "FAIL - cue text is lexically correlated with the action")
+    print("  VERDICT (conditional):", "PASS - adds nothing over the protocol every arm sees"
+          if cond < 0.03 else "FAIL - coarsen the cue")
 
     print()
     print("=" * 74)

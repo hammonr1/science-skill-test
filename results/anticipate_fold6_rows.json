@@ -1,0 +1,4232 @@
+[
+  {
+    "arm": "A",
+    "recording_id": "1_10",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_10",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_10",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_10",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_10",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_10",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_10",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_10",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_10",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_10",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_10",
+    "index": 7,
+    "y": 0,
+    "p": 0.1,
+    "cached": false,
+    "raw": "I need to assess the"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_10",
+    "index": 7,
+    "y": 0,
+    "p": 0.1,
+    "cached": false,
+    "raw": "Looking at this step"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_10",
+    "index": 7,
+    "y": 0,
+    "p": 0.1,
+    "cached": false,
+    "raw": "Looking at this step"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_10",
+    "index": 7,
+    "y": 0,
+    "p": 0.1,
+    "cached": false,
+    "raw": "Looking at this step"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_10",
+    "index": 7,
+    "y": 0,
+    "p": 0.1,
+    "cached": false,
+    "raw": "I need to analyze th"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_10",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_10",
+    "index": 9,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_10",
+    "index": 9,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_10",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_10",
+    "index": 9,
+    "y": 0,
+    "p": 0.02,
+    "cached": false,
+    "raw": "I need to analyze th"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_25",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_25",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_25",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_25",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_25",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_25",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_25",
+    "index": 2,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_25",
+    "index": 2,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_25",
+    "index": 2,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_25",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_25",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_25",
+    "index": 9,
+    "y": 0,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_25",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_25",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_25",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_30",
+    "index": 7,
+    "y": 1,
+    "p": 0.1,
+    "cached": false,
+    "raw": "I need to assess the"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_30",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_30",
+    "index": 7,
+    "y": 1,
+    "p": 0.1,
+    "cached": false,
+    "raw": "Looking at this step"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_30",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_30",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_34",
+    "index": 8,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_34",
+    "index": 8,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_34",
+    "index": 8,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_34",
+    "index": 8,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_34",
+    "index": 8,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_37",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_37",
+    "index": 2,
+    "y": 1,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_37",
+    "index": 2,
+    "y": 1,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_37",
+    "index": 2,
+    "y": 1,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_37",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "1_37",
+    "index": 9,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "1_37",
+    "index": 9,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "1_37",
+    "index": 9,
+    "y": 1,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "D",
+    "recording_id": "1_37",
+    "index": 9,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "1_37",
+    "index": 9,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "2_22",
+    "index": 7,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "2_22",
+    "index": 7,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "2_22",
+    "index": 7,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "2_22",
+    "index": 7,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "2_22",
+    "index": 7,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "2_42",
+    "index": 5,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "2_42",
+    "index": 5,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "2_42",
+    "index": 5,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "2_42",
+    "index": 5,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "2_42",
+    "index": 5,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "2_42",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "2_42",
+    "index": 6,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "2_42",
+    "index": 6,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "2_42",
+    "index": 6,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "2_42",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "2_42",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "2_42",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "2_42",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "2_42",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "2_42",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "2_46",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "2_46",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "2_46",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "2_46",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "2_46",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "2_46",
+    "index": 10,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "2_46",
+    "index": 10,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "2_46",
+    "index": 10,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "2_46",
+    "index": 10,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "E",
+    "recording_id": "2_46",
+    "index": 10,
+    "y": 0,
+    "p": 0.24,
+    "cached": false,
+    "raw": "I need to assess the"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_2",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_2",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_2",
+    "index": 4,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_2",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_2",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_2",
+    "index": 9,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_2",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_2",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_2",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_2",
+    "index": 9,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_7",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_7",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_7",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_7",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_7",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_7",
+    "index": 9,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_7",
+    "index": 9,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_7",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_7",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_7",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_20",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_20",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_20",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_20",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_20",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_20",
+    "index": 3,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_20",
+    "index": 3,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_20",
+    "index": 3,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_20",
+    "index": 3,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_20",
+    "index": 3,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_20",
+    "index": 9,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_20",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_20",
+    "index": 9,
+    "y": 0,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_20",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_20",
+    "index": 9,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_20",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_20",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_20",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_20",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_20",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_35",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_35",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_35",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_35",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_35",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_35",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_35",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_35",
+    "index": 4,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_35",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_35",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_35",
+    "index": 11,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_35",
+    "index": 11,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_35",
+    "index": 11,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_35",
+    "index": 11,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_35",
+    "index": 11,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_44",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_44",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_44",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_44",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_44",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_44",
+    "index": 10,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_44",
+    "index": 10,
+    "y": 1,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_44",
+    "index": 10,
+    "y": 1,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_44",
+    "index": 10,
+    "y": 1,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_44",
+    "index": 10,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_44",
+    "index": 12,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_44",
+    "index": 12,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_44",
+    "index": 12,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_44",
+    "index": 12,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_44",
+    "index": 12,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "4_44",
+    "index": 14,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "4_44",
+    "index": 14,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "4_44",
+    "index": 14,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "4_44",
+    "index": 14,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "4_44",
+    "index": 14,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "5_2",
+    "index": 12,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "5_2",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "5_2",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "5_2",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "5_2",
+    "index": 12,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "5_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "5_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.35,
+    "cached": false,
+    "raw": "35"
+  },
+  {
+    "arm": "C",
+    "recording_id": "5_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.61,
+    "cached": false,
+    "raw": "Looking at this step"
+  },
+  {
+    "arm": "D",
+    "recording_id": "5_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.61,
+    "cached": false,
+    "raw": "Looking at this step"
+  },
+  {
+    "arm": "E",
+    "recording_id": "5_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "5_22",
+    "index": 12,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "5_22",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "5_22",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "5_22",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "5_22",
+    "index": 12,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "5_22",
+    "index": 13,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "5_22",
+    "index": 13,
+    "y": 0,
+    "p": 0.35,
+    "cached": false,
+    "raw": "35"
+  },
+  {
+    "arm": "C",
+    "recording_id": "5_22",
+    "index": 13,
+    "y": 0,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "D",
+    "recording_id": "5_22",
+    "index": 13,
+    "y": 0,
+    "p": 0.61,
+    "cached": false,
+    "raw": "Looking at this step"
+  },
+  {
+    "arm": "E",
+    "recording_id": "5_22",
+    "index": 13,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "5_35",
+    "index": 12,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "5_35",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "5_35",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "5_35",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "5_35",
+    "index": 12,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "7_30",
+    "index": 0,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "7_30",
+    "index": 0,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "7_30",
+    "index": 0,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "7_30",
+    "index": 0,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "7_30",
+    "index": 0,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "7_30",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "7_30",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "7_30",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "7_30",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "7_30",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "7_30",
+    "index": 2,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "7_30",
+    "index": 2,
+    "y": 1,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "7_30",
+    "index": 2,
+    "y": 1,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "7_30",
+    "index": 2,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "7_30",
+    "index": 2,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "7_30",
+    "index": 3,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "7_30",
+    "index": 3,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "7_30",
+    "index": 3,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "7_30",
+    "index": 3,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "7_30",
+    "index": 3,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "7_38",
+    "index": 0,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "7_38",
+    "index": 0,
+    "y": 0,
+    "p": 0.28,
+    "cached": true,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "7_38",
+    "index": 0,
+    "y": 0,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "7_38",
+    "index": 0,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "7_38",
+    "index": 0,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "7_44",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "7_44",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "7_44",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "7_44",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "7_44",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "7_44",
+    "index": 3,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "7_44",
+    "index": 3,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "7_44",
+    "index": 3,
+    "y": 1,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "7_44",
+    "index": 3,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "7_44",
+    "index": 3,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "7_44",
+    "index": 5,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "7_44",
+    "index": 5,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "7_44",
+    "index": 5,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "7_44",
+    "index": 5,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "7_44",
+    "index": 5,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_2",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_2",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_2",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_2",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_2",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_2",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_2",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_2",
+    "index": 2,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_2",
+    "index": 2,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_2",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_2",
+    "index": 3,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_2",
+    "index": 3,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_2",
+    "index": 3,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_2",
+    "index": 3,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_2",
+    "index": 3,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_12",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_12",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_12",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_12",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_12",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_12",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_12",
+    "index": 2,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_12",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_12",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_12",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_12",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_12",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_12",
+    "index": 6,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_12",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_12",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_13",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_13",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_13",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_13",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_13",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_13",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_13",
+    "index": 2,
+    "y": 0,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_13",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_13",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_13",
+    "index": 2,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_24",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_24",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_24",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_24",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_24",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_24",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_24",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_24",
+    "index": 4,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_24",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_24",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_45",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_45",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_45",
+    "index": 2,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_45",
+    "index": 2,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_45",
+    "index": 2,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_45",
+    "index": 3,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_45",
+    "index": 3,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_45",
+    "index": 3,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_45",
+    "index": 3,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_45",
+    "index": 3,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "9_45",
+    "index": 7,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "9_45",
+    "index": 7,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "9_45",
+    "index": 7,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "9_45",
+    "index": 7,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "9_45",
+    "index": 7,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "21_17",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "21_17",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "21_17",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "21_17",
+    "index": 9,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "21_17",
+    "index": 9,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "21_37",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "21_37",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "21_37",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "21_37",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "21_37",
+    "index": 4,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "21_37",
+    "index": 5,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "21_37",
+    "index": 5,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "21_37",
+    "index": 5,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "21_37",
+    "index": 5,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "21_37",
+    "index": 5,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "21_37",
+    "index": 8,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "21_37",
+    "index": 8,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "21_37",
+    "index": 8,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "21_37",
+    "index": 8,
+    "y": 1,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "21_37",
+    "index": 8,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "21_46",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "21_46",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "21_46",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "21_46",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "21_46",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "21_46",
+    "index": 6,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "21_46",
+    "index": 6,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "21_46",
+    "index": 6,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "21_46",
+    "index": 6,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "21_46",
+    "index": 6,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "21_46",
+    "index": 10,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "21_46",
+    "index": 10,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "21_46",
+    "index": 10,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "21_46",
+    "index": 10,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "21_46",
+    "index": 10,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "21_50",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "21_50",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "21_50",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "21_50",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "21_50",
+    "index": 7,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_13",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_13",
+    "index": 8,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_13",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_13",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_13",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_13",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_13",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_13",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_13",
+    "index": 10,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_13",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_13",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_13",
+    "index": 12,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_13",
+    "index": 12,
+    "y": 0,
+    "p": 0.72,
+    "cached": false,
+    "raw": "72"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_13",
+    "index": 12,
+    "y": 0,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_13",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_21",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_21",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_21",
+    "index": 1,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_21",
+    "index": 1,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_21",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_21",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_21",
+    "index": 8,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_21",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_21",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_21",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_21",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_21",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_21",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_21",
+    "index": 10,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_21",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_21",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_21",
+    "index": 12,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_21",
+    "index": 12,
+    "y": 0,
+    "p": 0.72,
+    "cached": false,
+    "raw": "72"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_21",
+    "index": 12,
+    "y": 0,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_21",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_26",
+    "index": 6,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_26",
+    "index": 6,
+    "y": 1,
+    "p": 0.35,
+    "cached": false,
+    "raw": "35"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_26",
+    "index": 6,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_26",
+    "index": 6,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_26",
+    "index": 6,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_26",
+    "index": 9,
+    "y": 1,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_26",
+    "index": 9,
+    "y": 1,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_26",
+    "index": 9,
+    "y": 1,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_26",
+    "index": 9,
+    "y": 1,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_26",
+    "index": 9,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_30",
+    "index": 11,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_30",
+    "index": 11,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_30",
+    "index": 11,
+    "y": 0,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_30",
+    "index": 11,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_30",
+    "index": 11,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_30",
+    "index": 12,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_30",
+    "index": 12,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_30",
+    "index": 12,
+    "y": 1,
+    "p": 0.72,
+    "cached": false,
+    "raw": "72"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_30",
+    "index": 12,
+    "y": 1,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_30",
+    "index": 12,
+    "y": 1,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_41",
+    "index": 1,
+    "y": 1,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_41",
+    "index": 1,
+    "y": 1,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_41",
+    "index": 1,
+    "y": 1,
+    "p": 0.28,
+    "cached": true,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_41",
+    "index": 1,
+    "y": 1,
+    "p": 0.25,
+    "cached": true,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_41",
+    "index": 1,
+    "y": 1,
+    "p": 0.15,
+    "cached": true,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_41",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_41",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_41",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_41",
+    "index": 4,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_41",
+    "index": 4,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_41",
+    "index": 8,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_41",
+    "index": 8,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_41",
+    "index": 8,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_41",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_41",
+    "index": 8,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "22_41",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "22_41",
+    "index": 12,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "22_41",
+    "index": 12,
+    "y": 0,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "D",
+    "recording_id": "22_41",
+    "index": 12,
+    "y": 0,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "E",
+    "recording_id": "22_41",
+    "index": 12,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_2",
+    "index": 11,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_2",
+    "index": 11,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_2",
+    "index": 11,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_2",
+    "index": 11,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_2",
+    "index": 11,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_2",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_2",
+    "index": 15,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_2",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_2",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_2",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_2",
+    "index": 15,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_3",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_3",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_3",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_3",
+    "index": 6,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_3",
+    "index": 6,
+    "y": 0,
+    "p": 0.08,
+    "cached": false,
+    "raw": "8"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_3",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_3",
+    "index": 8,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_3",
+    "index": 8,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_3",
+    "index": 8,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_3",
+    "index": 8,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_3",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_3",
+    "index": 13,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_3",
+    "index": 13,
+    "y": 0,
+    "p": 0.42,
+    "cached": false,
+    "raw": "42"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_3",
+    "index": 13,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_3",
+    "index": 13,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_3",
+    "index": 15,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_3",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_3",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_3",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_3",
+    "index": 15,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_7",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_7",
+    "index": 10,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_7",
+    "index": 10,
+    "y": 0,
+    "p": 0.28,
+    "cached": false,
+    "raw": "28"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_7",
+    "index": 10,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_7",
+    "index": 10,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_7",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_7",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_7",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_7",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_7",
+    "index": 15,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "28_10",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "B",
+    "recording_id": "28_10",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "C",
+    "recording_id": "28_10",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "D",
+    "recording_id": "28_10",
+    "index": 15,
+    "y": 0,
+    "p": 0.25,
+    "cached": false,
+    "raw": "25"
+  },
+  {
+    "arm": "E",
+    "recording_id": "28_10",
+    "index": 15,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "A",
+    "recording_id": "29_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.08,
+    "cached": false,
+    "raw": "8"
+  },
+  {
+    "arm": "B",
+    "recording_id": "29_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "C",
+    "recording_id": "29_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.12,
+    "cached": false,
+    "raw": "12"
+  },
+  {
+    "arm": "D",
+    "recording_id": "29_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  },
+  {
+    "arm": "E",
+    "recording_id": "29_37",
+    "index": 1,
+    "y": 0,
+    "p": 0.15,
+    "cached": false,
+    "raw": "15"
+  }
+]

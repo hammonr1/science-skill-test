@@ -1,0 +1,21 @@
+====================================================================================
+STAGE 2 DRY RUN -- fold 6, covered points only, UNDERPOWERED BY DESIGN
+====================================================================================
+  covered points 94   positives 23   base rate 0.245
+  model claude-haiku-4-5-20251001   temp 0   seed 7   metric Brier (primary), AUROC (secondary)
+
+arm  description                   blk tok    Brier   AUROC   p_mean    p_sd
+A    no skill (baseline)               0.0   0.1775   0.652    0.183   0.055
+B    flat advice                     107.4   0.1812   0.554    0.231   0.062
+C    cue-conditioned                 295.0   0.1872   0.597    0.257   0.120
+D    scrambled cue (control)         295.0   0.1869   0.556    0.239   0.088
+E    placebo: other recipe (control)    290.4   0.1736   0.739    0.178   0.051
+
+  C - D  Brier +0.0003   (negative favours C: lower Brier is better)
+  C - E  Brier +0.0136   (placebo: same template, other recipe)
+  C - A  Brier +0.0097
+  B - A  Brier +0.0036
+  always-predict-base-rate Brier = 0.1848
+
+  UNDERPOWERED: single fold, covered points only. No CI, no MDE, no
+  inferential claim. Directional read only.

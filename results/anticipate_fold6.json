@@ -1,0 +1,82 @@
+{
+  "stage": "stage2_dry_run",
+  "fold": 6,
+  "model": "claude-haiku-4-5-20251001",
+  "seed": 7,
+  "scoring": "covered points only (cue+target match), no support floor",
+  "underpowered": true,
+  "n_points": 94,
+  "n_positives": 23,
+  "base_rate": 0.24468085106382978,
+  "per_arm": {
+    "A": {
+      "label": "no skill (baseline)",
+      "n": 94,
+      "brier": 0.17752978723404256,
+      "auroc": 0.6515615431720759,
+      "p_mean": 0.1829787234042553,
+      "p_sd": 0.054925752176153406,
+      "p_min": 0.08,
+      "p_max": 0.42,
+      "block_tokens_mean": 0,
+      "n_unparseable": 0
+    },
+    "B": {
+      "label": "flat advice",
+      "n": 94,
+      "brier": 0.18115744680851065,
+      "auroc": 0.554194733619106,
+      "p_mean": 0.23127659574468085,
+      "p_sd": 0.062290233663005394,
+      "p_min": 0.1,
+      "p_max": 0.42,
+      "block_tokens_mean": 107.36170212765957,
+      "n_unparseable": 0
+    },
+    "C": {
+      "label": "cue-conditioned",
+      "n": 94,
+      "brier": 0.1872468085106383,
+      "auroc": 0.59736680955297,
+      "p_mean": 0.2570212765957447,
+      "p_sd": 0.11965748418270135,
+      "p_min": 0.1,
+      "p_max": 0.72,
+      "block_tokens_mean": 295.01063829787233,
+      "n_unparseable": 0
+    },
+    "D": {
+      "label": "scrambled cue (control)",
+      "n": 94,
+      "brier": 0.18694468085106383,
+      "auroc": 0.5557256582976118,
+      "p_mean": 0.23914893617021277,
+      "p_sd": 0.08778835221031508,
+      "p_min": 0.1,
+      "p_max": 0.61,
+      "block_tokens_mean": 295.01063829787233,
+      "n_unparseable": 0
+    },
+    "E": {
+      "label": "placebo: other recipe (control)",
+      "n": 94,
+      "brier": 0.17361063829787232,
+      "auroc": 0.7394366197183099,
+      "p_mean": 0.17808510638297873,
+      "p_sd": 0.05061506842965935,
+      "p_min": 0.02,
+      "p_max": 0.25,
+      "block_tokens_mean": 290.4148936170213,
+      "n_unparseable": 0
+    }
+  },
+  "brier_C_minus_D": 0.00030212765957446375,
+  "brier_C_minus_E": 0.013636170212765975,
+  "brier_C_minus_A": 0.009717021276595739,
+  "brier_B_minus_A": 0.0036276595744680895,
+  "baseline_brier_predict_base_rate": 0.18481213218650974,
+  "n_calls": 470,
+  "n_cached": 48,
+  "system_prompt": "You are predicting how a person performs a cooking recipe in a real kitchen. You will be told which step they are about to perform next. Estimate the probability that they will perform that step with an execution-quality error: a preparation, measurement, timing, technique, or temperature mistake. This is about HOW WELL the step is carried out, not about which step they choose. If practitioner tips are shown, treat them as a general caution list compiled from other people's earlier sessions. They are not evidence about this particular person or this particular step, and their presence does not by itself make an error likely.",
+  "user_template": "RECIPE: {recipe}\n\n{protocol}\n\nSTEPS THIS PERSON HAS ALREADY COMPLETED, in order:\n{history}\n{skill_block}\nTHE STEP THEY ARE ABOUT TO PERFORM NEXT:\n  [{target_id}] {target_text}\n\nSTEPS STILL REMAINING AFTER THIS ONE (listed in recipe order, not in the order they will be done):\n{remaining}\n\nWhat is the probability that this person performs the step above with an\nexecution-quality error (preparation, measurement, timing, technique, or temperature)?\n\nOutput ONLY an integer from 0 to 100. No other text.\nExample format: 35"
+}
