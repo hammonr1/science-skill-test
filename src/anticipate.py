@@ -54,9 +54,10 @@ from labels import EXECUTION_TAGS, build_points
 from library_churn import load_records
 from library_variants import mine
 
-ARMS = ["A", "B", "C", "D"]
+ARMS = ["A", "B", "C", "D", "E"]
 ARM_LABEL = {"A": "no skill (baseline)", "B": "flat advice",
-             "C": "cue-conditioned", "D": "scrambled cue (control)"}
+             "C": "cue-conditioned", "D": "scrambled cue (control)",
+             "E": "placebo: other recipe (control)"}
 SEED = 7
 MODEL = "claude-haiku-4-5-20251001"
 
@@ -65,7 +66,10 @@ SYSTEM = (
     "You will be told which step they are about to perform next. Estimate the "
     "probability that they will perform that step with an execution-quality error: "
     "a preparation, measurement, timing, technique, or temperature mistake. "
-    "This is about HOW WELL the step is carried out, not about which step they choose."
+    "This is about HOW WELL the step is carried out, not about which step they choose. "
+    "If practitioner tips are shown, treat them as a general caution list compiled from "
+    "other people's earlier sessions. They are not evidence about this particular person "
+    "or this particular step, and their presence does not by itself make an error likely."
 )
 
 USER_TEMPLATE = """RECIPE: {recipe}
@@ -106,6 +110,11 @@ def scramble(rules, seed):
 
 
 def render_block(rules, arm, protocol, seed=SEED):
+    """Arm E is rendered by the caller with donor rules + the donor protocol,
+    so it reaches here as an ordinary 'C' render: structurally identical to the
+    treatment, topically irrelevant to the step being asked about."""
+    if arm == "E":
+        arm = "C"
     if arm == "A" or not rules:
         return ""
     scr = scramble(rules, seed) if arm == "D" else None
@@ -168,7 +177,7 @@ def call(client, cache, user, max_retries=5):
     d = 2.0
     for a in range(max_retries):
         try:
-            r = client.messages.create(model=MODEL, max_tokens=8, temperature=0,
+            r = client.messages.create(model=MODEL, max_tokens=24, temperature=0,
                                        system=SYSTEM,
                                        messages=[{"role": "user", "content": user}])
             t = r.content[0].text if r.content else ""
@@ -236,12 +245,24 @@ def main(fold=6, workers=12):
     pts, lib_by_recipe = covered_points(fold, protocols, records, points)
     print(f"fold {fold}: {len(pts)} covered points, {sum(p.y_execution for p in pts)} positives")
 
+    # Arm E donor: deterministic rotation over recipes that actually have rules.
+    # The donor library is rendered against the DONOR's protocol, so arm E is
+    # arm C's template filled with real but topically irrelevant content.
+    stocked = sorted(rc for rc, rs in lib_by_recipe.items() if rs)
+    donor_of = {rc: stocked[(i + 1) % len(stocked)] for i, rc in enumerate(stocked)}
+
+    block_tokens = collections.defaultdict(list)
     jobs = []
     for p in pts:
         proto = protocols[p.recipe]
         base = None
         for arm in ARMS:
-            block = render_block(lib_by_recipe[p.recipe], arm, proto)
+            if arm == "E":
+                dr = donor_of.get(p.recipe, p.recipe)
+                block = render_block(lib_by_recipe[dr], "E", protocols[dr])
+            else:
+                block = render_block(lib_by_recipe[p.recipe], arm, proto)
+            block_tokens[arm].append(len(block.split()))
             u = build_prompt(p, proto, block)
             assert_no_target_leakage(u, p, err_lookup)
             # arms must be byte-identical outside the skill block
@@ -280,6 +301,7 @@ def main(fold=6, workers=12):
             "brier": brier(ps, ys), "auroc": auroc(ps, ys),
             "p_mean": statistics.mean(ps), "p_sd": statistics.stdev(ps) if len(ps) > 1 else 0.0,
             "p_min": min(ps), "p_max": max(ps),
+            "block_tokens_mean": statistics.mean(block_tokens[arm]),
             "n_unparseable": sum(1 for r in rows if r["arm"] == arm and r["p"] is None),
         }
     base_rate = statistics.mean(p.y_execution for p in pts)
@@ -291,17 +313,20 @@ def main(fold=6, workers=12):
          f"   base rate {base_rate:.3f}",
          f"  model {MODEL}   temp 0   seed {SEED}   metric Brier (primary), AUROC (secondary)",
          "",
-         f"{'arm':<5}{'description':<26}{'Brier':>9}{'AUROC':>8}{'p_mean':>9}{'p_sd':>8}"
-         f"{'p_min':>7}{'p_max':>7}"]
+         f"{'arm':<5}{'description':<28}{'blk tok':>9}{'Brier':>9}{'AUROC':>8}"
+         f"{'p_mean':>9}{'p_sd':>8}"]
     for arm in ARMS:
         a = per_arm[arm]
-        L.append(f"{arm:<5}{a['label']:<26}{a['brier']:>9.4f}{a['auroc']:>8.3f}"
-                 f"{a['p_mean']:>9.3f}{a['p_sd']:>8.3f}{a['p_min']:>7.2f}{a['p_max']:>7.2f}")
+        L.append(f"{arm:<5}{a['label']:<28}{a['block_tokens_mean']:>9.1f}"
+                 f"{a['brier']:>9.4f}{a['auroc']:>8.3f}"
+                 f"{a['p_mean']:>9.3f}{a['p_sd']:>8.3f}")
+    ce = per_arm["C"]["brier"] - per_arm["E"]["brier"]
     cd = per_arm["C"]["brier"] - per_arm["D"]["brier"]
     ca = per_arm["C"]["brier"] - per_arm["A"]["brier"]
     ba = per_arm["B"]["brier"] - per_arm["A"]["brier"]
     L += ["",
           f"  C - D  Brier {cd:+.4f}   (negative favours C: lower Brier is better)",
+          f"  C - E  Brier {ce:+.4f}   (placebo: same template, other recipe)",
           f"  C - A  Brier {ca:+.4f}",
           f"  B - A  Brier {ba:+.4f}",
           f"  always-predict-base-rate Brier = {base_rate*(1-base_rate):.4f}",
@@ -318,7 +343,7 @@ def main(fold=6, workers=12):
                "scoring": "covered points only (cue+target match), no support floor",
                "underpowered": True, "n_points": len(pts),
                "n_positives": sum(p.y_execution for p in pts), "base_rate": base_rate,
-               "per_arm": per_arm, "brier_C_minus_D": cd, "brier_C_minus_A": ca,
+               "per_arm": per_arm, "brier_C_minus_D": cd, "brier_C_minus_E": ce, "brier_C_minus_A": ca,
                "brier_B_minus_A": ba,
                "baseline_brier_predict_base_rate": base_rate * (1 - base_rate),
                "n_calls": len(jobs), "n_cached": sum(1 for r in rows if r["cached"]),
