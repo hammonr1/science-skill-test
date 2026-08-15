@@ -77,13 +77,27 @@ def build(rows, stage, model, k_skills, seed):
     for arm in arms_present:
         rs = by_arm[arm]
         fm = {str(f): statistics.mean(v) for f, v in sorted(fold_means[arm].items())}
-        lo, hi = bootstrap_ci(list(fm.values()), n_boot=N_BOOT, alpha=ALPHA)
+        # MICRO: every decision point weighted equally; CI resamples POINTS.
+        # MACRO: every participant weighted equally; CI resamples PARTICIPANTS.
+        # They must not be mixed. The previous version paired a micro point
+        # estimate with a macro CI, so the estimate was not the centre of its own
+        # interval and a reader deriving C-A from the arm column got a number
+        # that did not match the paired macro contrast.
+        micro = statistics.mean(x["rr"] for x in rs)
+        macro = statistics.mean(fm.values())
         per_arm[arm] = {
             "label": ARM_LABEL[arm],
             "n_decision_points": len(rs),
-            "mrr": statistics.mean(x["rr"] for x in rs),
-            "top1": statistics.mean(x["top1"] for x in rs),
-            "mrr_ci95_participant_bootstrap": [lo, hi],
+            "mrr_micro": micro,
+            "mrr_micro_ci95_point_bootstrap": list(
+                bootstrap_ci([x["rr"] for x in rs], n_boot=N_BOOT, alpha=ALPHA)),
+            "mrr_macro": macro,
+            "mrr_macro_ci95_participant_bootstrap": list(
+                bootstrap_ci(list(fm.values()), n_boot=N_BOOT, alpha=ALPHA)),
+            "top1_micro": statistics.mean(x["top1"] for x in rs),
+            "top1_macro": statistics.mean(
+                statistics.mean(1.0 if r["rank"] == 1 else 0.0 for r in by_arm[arm]
+                                if r["fold"] == f) for f in sorted(fold_means[arm])),
             "per_fold_mrr": fm,
         }
 
@@ -93,10 +107,22 @@ def build(rows, stage, model, k_skills, seed):
             continue
         delta, ci, p, per_fold = cluster_bootstrap_paired(rows, x, y, n_boot=N_BOOT)
         n_total, n_per_fold = paired_n(rows, x, y)
+        # micro version of the same contrast: paired per decision point,
+        # bootstrap resampling POINTS rather than participants
+        xa = {(r["recording_id"], r["index"]): r["rr"] for r in rows if r["arm"] == x}
+        ya = {(r["recording_id"], r["index"]): r["rr"] for r in rows if r["arm"] == y}
+        keys = sorted(set(xa) & set(ya))
+        diffs = [xa[k] - ya[k] for k in keys]
+        micro_delta = statistics.mean(diffs) if diffs else float("nan")
+        micro_ci = list(bootstrap_ci(diffs, n_boot=N_BOOT, alpha=ALPHA))
         contrasts[f"{x}-{y}"] = {
             "arms": [x, y],
             "description": f"{ARM_LABEL[x]}  minus  {ARM_LABEL[y]}",
-            "point_estimate_delta_mrr": delta,
+            "delta_macro": delta,
+            "ci95_macro_participant_bootstrap": list(ci),
+            "delta_micro": micro_delta,
+            "ci95_micro_point_bootstrap": micro_ci,
+            "point_estimate_delta_mrr": delta,   # retained: macro, the inferential one
             "ci95": list(ci),
             "per_fold_delta": {str(k): v for k, v in sorted(per_fold.items())},
             "n_folds": len(per_fold),
@@ -118,6 +144,14 @@ def build(rows, stage, model, k_skills, seed):
         "rank_fallback_seed": RANK_SEED,
         "k_skills": k_skills,
         "metric": "MRR of the true next step among all remaining steps",
+        "aggregation_note": (
+            "MICRO = mean over decision points, CI resamples decision points. "
+            "MACRO = mean over the 8 participant folds, CI resamples participants. "
+            "The MACRO figures are the inferential ones: participants are the unit "
+            "of generalisation, and fold sizes here range 64-198, so micro lets a "
+            "large fold dominate. Quote one aggregation throughout and say which. "
+            "point_estimate_delta_mrr and ci95 are the MACRO values, kept under "
+            "their original names so earlier citations remain valid."),
         "holdout": "leave-one-participant-out; skills authored from training participants only",
         "bootstrap": {
             "type": "paired cluster bootstrap, resampling participants",
@@ -143,25 +177,32 @@ def main(stage="pilot"):
     print("=" * 78)
     print(f"FINAL  stage={stage}  model={out['model']}")
     print("=" * 78)
-    print(f"{'arm':<5}{'description':<26}{'MRR':>8}{'95% CI':>22}{'top-1':>8}")
+    print(f"{'arm':<5}{'description':<26}{'MRR micro':>11}{'95% CI (pts)':>22}"
+          f"{'MRR macro':>11}{'95% CI (ppl)':>22}")
     for arm, a in out["per_arm"].items():
-        ci = "[%.4f, %.4f]" % tuple(a["mrr_ci95_participant_bootstrap"])
-        print(f"{arm:<5}{a['label']:<26}{a['mrr']:>8.4f}{ci:>22}{a['top1']:>8.4f}")
+        cim = "[%.4f, %.4f]" % tuple(a["mrr_micro_ci95_point_bootstrap"])
+        cia = "[%.4f, %.4f]" % tuple(a["mrr_macro_ci95_participant_bootstrap"])
+        print(f"{arm:<5}{a['label']:<26}{a['mrr_micro']:>11.4f}{cim:>22}"
+              f"{a['mrr_macro']:>11.4f}{cia:>22}")
     print()
-    print(f"{'contrast':<10}{'delta':>10}{'95% CI':>24}{'p_raw':>9}{'p_holm':>9}{'sig':>5}{'n_pairs':>9}")
+    print(f"{'contrast':<10}{'MACRO':>10}{'95% CI (ppl)':>24}{'MICRO':>10}"
+          f"{'95% CI (pts)':>24}{'p_holm':>9}{'n':>7}")
     for k, v in c.items():
-        ci = "[%+.4f, %+.4f]" % tuple(v["ci95"])
-        print(f"{k:<10}{v['point_estimate_delta_mrr']:>+10.4f}{ci:>24}"
-              f"{v['p_raw']:>9.4f}{v['p_holm']:>9.4f}"
-              f"{'YES' if v['significant_holm_alpha05'] else 'no':>5}"
-              f"{v['n_paired_decision_points']:>9}")
+        cia = "[%+.4f, %+.4f]" % tuple(v["ci95_macro_participant_bootstrap"])
+        cim = "[%+.4f, %+.4f]" % tuple(v["ci95_micro_point_bootstrap"])
+        print(f"{k:<10}{v['delta_macro']:>+10.4f}{cia:>24}{v['delta_micro']:>+10.4f}"
+              f"{cim:>24}{v['p_holm']:>9.4f}{v['n_paired_decision_points']:>7}")
     if "C-D" in c:
         v = c["C-D"]
         print()
-        print(f"C-D (the load-bearing contrast): {v['point_estimate_delta_mrr']:+.4f} "
-              f"[{v['ci95'][0]:+.4f}, {v['ci95'][1]:+.4f}], "
-              f"p_holm={v['p_holm']:.4f}, {v['n_folds']} folds, "
-              f"{v['n_paired_decision_points']} paired points")
+        print(f"C-D (load-bearing) MACRO {v['delta_macro']:+.4f} "
+              f"[{v['ci95_macro_participant_bootstrap'][0]:+.4f}, "
+              f"{v['ci95_macro_participant_bootstrap'][1]:+.4f}]  |  MICRO "
+              f"{v['delta_micro']:+.4f} "
+              f"[{v['ci95_micro_point_bootstrap'][0]:+.4f}, "
+              f"{v['ci95_micro_point_bootstrap'][1]:+.4f}]")
+        print(f"  p_holm={v['p_holm']:.4f}, {v['n_folds']} folds, "
+              f"{v['n_paired_decision_points']} paired points. Quote MACRO.")
     print("\nwrote results/final.json")
 
 

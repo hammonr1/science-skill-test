@@ -6,6 +6,7 @@
   "rank_fallback_seed": 4242,
   "k_skills": 8,
   "metric": "MRR of the true next step among all remaining steps",
+  "aggregation_note": "MICRO = mean over decision points, CI resamples decision points. MACRO = mean over the 8 participant folds, CI resamples participants. The MACRO figures are the inferential ones: participants are the unit of generalisation, and fold sizes here range 64-198, so micro lets a large fold dominate. Quote one aggregation throughout and say which. point_estimate_delta_mrr and ci95 are the MACRO values, kept under their original names so earlier citations remain valid.",
   "holdout": "leave-one-participant-out; skills authored from training participants only",
   "bootstrap": {
     "type": "paired cluster bootstrap, resampling participants",
@@ -17,12 +18,18 @@
     "A": {
       "label": "no skill (baseline)",
       "n_decision_points": 1063,
-      "mrr": 0.711549424496273,
-      "top1": 0.5569143932267169,
-      "mrr_ci95_participant_bootstrap": [
+      "mrr_micro": 0.711549424496273,
+      "mrr_micro_ci95_point_bootstrap": [
+        0.691158629705196,
+        0.7315310577892892
+      ],
+      "mrr_macro": 0.723645247913097,
+      "mrr_macro_ci95_participant_bootstrap": [
         0.6892473487035815,
         0.7577358813468277
       ],
+      "top1_micro": 0.5569143932267169,
+      "top1_macro": 0.5756312632160041,
       "per_fold_mrr": {
         "1": 0.765557685286601,
         "2": 0.7203391053391054,
@@ -37,12 +44,18 @@
     "B": {
       "label": "flat advice",
       "n_decision_points": 1063,
-      "mrr": 0.7091556308748218,
-      "top1": 0.5559736594543744,
-      "mrr_ci95_participant_bootstrap": [
+      "mrr_micro": 0.7091556308748218,
+      "mrr_micro_ci95_point_bootstrap": [
+        0.6886024644844024,
+        0.7296297240441173
+      ],
+      "mrr_macro": 0.7216999811539134,
+      "mrr_macro_ci95_participant_bootstrap": [
         0.6864782863532771,
         0.7569216759545496
       ],
+      "top1_micro": 0.5559736594543744,
+      "top1_macro": 0.5756163462509696,
       "per_fold_mrr": {
         "1": 0.762552808637146,
         "2": 0.71498556998557,
@@ -57,12 +70,18 @@
     "C": {
       "label": "cue-conditioned",
       "n_decision_points": 1063,
-      "mrr": 0.7280613253684749,
-      "top1": 0.5841956726246472,
-      "mrr_ci95_participant_bootstrap": [
+      "mrr_micro": 0.7280613253684749,
+      "mrr_micro_ci95_point_bootstrap": [
+        0.7080484974417242,
+        0.7480825631460627
+      ],
+      "mrr_macro": 0.7382980105613641,
+      "mrr_macro_ci95_participant_bootstrap": [
         0.7067112012166914,
         0.7668554781164468
       ],
+      "top1_micro": 0.5841956726246472,
+      "top1_macro": 0.5991121159158309,
       "per_fold_mrr": {
         "1": 0.770276560788609,
         "2": 0.7622222222222222,
@@ -77,12 +96,18 @@
     "D": {
       "label": "scrambled cue (control)",
       "n_decision_points": 1063,
-      "mrr": 0.6473564912308648,
-      "top1": 0.46942615239887114,
-      "mrr_ci95_participant_bootstrap": [
+      "mrr_micro": 0.6473564912308648,
+      "mrr_micro_ci95_point_bootstrap": [
+        0.6264604097644304,
+        0.6686625212728169
+      ],
+      "mrr_macro": 0.6605836562073357,
+      "mrr_macro_ci95_participant_bootstrap": [
         0.6215040801726371,
         0.6982674403313879
       ],
+      "top1_micro": 0.46942615239887114,
+      "top1_macro": 0.48701086089948614,
       "per_fold_mrr": {
         "1": 0.7077457014204002,
         "2": 0.6656487956487956,
@@ -102,6 +127,16 @@
         "B"
       ],
       "description": "cue-conditioned  minus  flat advice",
+      "delta_macro": 0.016598029407450716,
+      "ci95_macro_participant_bootstrap": [
+        0.0017870502267116248,
+        0.030224314142669597
+      ],
+      "delta_micro": 0.0189056944936531,
+      "ci95_micro_point_bootstrap": [
+        0.0038841267439574116,
+        0.033818836123633865
+      ],
       "point_estimate_delta_mrr": 0.016598029407450716,
       "ci95": [
         0.0017870502267116248,
@@ -139,6 +174,16 @@
         "D"
       ],
       "description": "cue-conditioned  minus  scrambled cue (control)",
+      "delta_macro": 0.07771435435402833,
+      "ci95_macro_participant_bootstrap": [
+        0.06312487810699789,
+        0.09176244799445625
+      ],
+      "delta_micro": 0.08070483413761018,
+      "ci95_micro_point_bootstrap": [
+        0.06374560393039436,
+        0.09799997281808158
+      ],
       "point_estimate_delta_mrr": 0.07771435435402833,
       "ci95": [
         0.06312487810699789,
@@ -176,6 +221,16 @@
         "A"
       ],
       "description": "flat advice  minus  no skill (baseline)",
+      "delta_macro": -0.0019452667591836332,
+      "ci95_macro_participant_bootstrap": [
+        -0.0035564371623785923,
+        4.996784750907669e-05
+      ],
+      "delta_micro": -0.002393793621451194,
+      "ci95_micro_point_bootstrap": [
+        -0.011634205660546206,
+        0.0067651461113361405
+      ],
       "point_estimate_delta_mrr": -0.0019452667591836332,
       "ci95": [
         -0.0035564371623785923,
