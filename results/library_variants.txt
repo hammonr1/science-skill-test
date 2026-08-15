@@ -1,0 +1,18 @@
+================================================================================================
+SUPPORT-FLOOR VARIANTS  (per-fold support, training executions only)
+================================================================================================
+variant      rules/fold  union  Jaccard  in all 8  uniq-1   sup=1  cov_tgt  cov_cue+tgt
+none              186.2    392    0.541         2     179     65%    53.4%        17.1%
+min2_inst          65.8    110    0.569         2      29      0%    16.2%         4.5%
+min2_ops           34.4     61    0.496         2      15      0%     7.8%         2.5%
+
+PER-FOLD COVERAGE (cue+target match -- the template under test)
+variant            1       2       3       4       5       6       7       8
+none           15.5%   22.5%   17.5%   15.8%   18.4%   15.6%   13.5%   18.1%
+min2_inst       5.2%    4.9%    4.0%    3.4%    3.7%    6.6%    4.5%    4.0%
+min2_ops        3.8%    2.1%    2.4%    1.6%    2.3%    4.1%    1.2%    2.3%
+
+PER-FOLD JACCARD RANGE
+  none         mean 0.541  min 0.405  max 0.697
+  min2_inst    mean 0.569  min 0.395  max 0.833
+  min2_ops     mean 0.496  min 0.318  max 0.833
