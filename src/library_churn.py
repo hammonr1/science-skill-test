@@ -16,16 +16,20 @@ RULE CONSTRUCTION (deterministic; model-normalised clustering is deferred).
                among training participants -- observable strictly before the
                target step begins
   target       the step the intervention applies to; step index is unchanged
-  intervention the normalised token delta between the protocol description and
-               what the operator actually did (modified_description), taken over
-               execution-error instances only, most frequent delta wins
+  intervention a replacement pair, 'protocol span -> actual span', aligned
+               between the protocol description and what the operator actually
+               did (modified_description), taken over execution-error instances
+               only, most frequent delta wins
 
-Normalisation is case, whitespace and punctuation only, per the Stage 0 ruling.
+Normalisation preserves numeric atoms and is otherwise case, whitespace and
+punctuation; the delta is a difflib alignment rather than a set difference. Both
+are deterministic -- no model, no lexicon, no hand-labelling.
 """
 
 from __future__ import annotations
 
 import collections
+import difflib
 import itertools
 import json
 import os
@@ -57,20 +61,40 @@ def norm(s: str) -> str:
     return " ".join(t.replace(" ", "") for t in toks)
 
 
+CONTEXT = 1   # equal tokens kept either side of a changed span
+
+
 def delta(protocol_text: str, actual_text: str) -> str:
-    """Normalised token delta: what the operator did that the protocol does not say."""
+    """Replacement-pair delta: 'protocol span -> actual span', with context.
+
+    An additions-only delta drops whatever matched on both sides, which is
+    usually the unit: '1 tablespoon' -> '1/2 tablespoon' reduced to the bare
+    token '1/2'. Aligning the two token sequences and emitting the CHANGED SPAN
+    with one equal token either side keeps the referent, so the same pair reads
+    '1 tablespoon -> 1/2 tablespoon'.
+
+    Deterministic: difflib alignment, no model, no lexicon.
+    """
     p, a = norm(protocol_text).split(), norm(actual_text).split()
-    ps = collections.Counter(p)
-    out = [t for t in a if ps[t] == 0 or ps.subtract([t]) is None and ps[t] < 0]
-    # simpler and order-preserving: tokens in actual not present in protocol
-    ps = collections.Counter(p)
-    out = []
-    for t in a:
-        if ps[t] > 0:
-            ps[t] -= 1
-        else:
-            out.append(t)
-    return " ".join(out)
+    sm = difflib.SequenceMatcher(a=p, b=a, autojunk=False)
+    ops = sm.get_opcodes()
+    parts = []
+    for k, (tag, i1, i2, j1, j2) in enumerate(ops):
+        if tag == "equal":
+            continue
+        lo = ops[k - 1] if k else None
+        hi = ops[k + 1] if k + 1 < len(ops) else None
+        pre = p[max(lo[2] - CONTEXT, lo[1]):lo[2]] if lo and lo[0] == "equal" else []
+        post = p[hi[1]:min(hi[1] + CONTEXT, hi[2])] if hi and hi[0] == "equal" else []
+        old = " ".join(pre + p[i1:i2] + post).strip()
+        new = " ".join(pre + a[j1:j2] + post).strip()
+        if old and new and old != new:
+            parts.append(f"{old} -> {new}")
+        elif new:
+            parts.append(f"add {new}")
+        elif old:
+            parts.append(f"omit {old}")
+    return "; ".join(parts)
 
 
 def load_records():
