@@ -1,0 +1,27 @@
+==============================================================================
+
+LIBRARY CHURN DIAGNOSTIC (offline, no model calls)
+
+==============================================================================
+
+--- DIFF-BASED EXECUTION LIBRARY
+    rules per fold            {'1': 188, '2': 182, '3': 188, '4': 188, '5': 186, '6': 188, '7': 182, '8': 188}
+    union of rules            390
+    distinct libraries / 8    8
+    pairwise Jaccard (28 pr)  mean 0.5422  min 0.4046  max 0.6972
+    rules present in all 8    2
+    rules unique to one fold  176
+    support: n 1490  mean 1.45  median 1.0  min 1  max 7
+             quartiles [1.0, 1.0, 2.0]
+             support==1 rules: 964 (65%)
+
+--- BIGRAM LIBRARY (baseline)
+    rules per fold            {'1': 191, '2': 191, '3': 191, '4': 190, '5': 191, '6': 191, '7': 191, '8': 191}
+    union of rules            250
+    distinct libraries / 8    8
+    pairwise Jaccard (28 pr)  mean 0.8065  min 0.6754  max 0.9100
+    rules present in all 8    128
+    rules unique to one fold  32
+    support: n 1527  mean 9.01  median 9.0  min 1  max 24
+             quartiles [6.0, 9.0, 11.0]
+             support==1 rules: 7 (0%)

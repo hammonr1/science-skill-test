@@ -1,0 +1,51 @@
+{
+  "K": 8,
+  "execution_library": {
+    "n_pairs": 28,
+    "jaccard_mean": 0.5422173152325083,
+    "jaccard_min": 0.40458015267175573,
+    "jaccard_max": 0.6972477064220184,
+    "distinct_libraries": 8,
+    "union_rules": 390,
+    "rules_in_all_8": 2,
+    "rules_unique_to_one_fold": 176,
+    "per_fold_size": {
+      "1": 188,
+      "2": 182,
+      "3": 188,
+      "4": 188,
+      "5": 186,
+      "6": 188,
+      "7": 182,
+      "8": 188
+    }
+  },
+  "bigram_library": {
+    "n_pairs": 28,
+    "jaccard_mean": 0.8065154963497803,
+    "jaccard_min": 0.6754385964912281,
+    "jaccard_max": 0.91,
+    "distinct_libraries": 8,
+    "union_rules": 250,
+    "rules_in_all_8": 128,
+    "rules_unique_to_one_fold": 32,
+    "per_fold_size": {
+      "1": 191,
+      "2": 191,
+      "3": 191,
+      "4": 190,
+      "5": 191,
+      "6": 191,
+      "7": 191,
+      "8": 191
+    }
+  },
+  "execution_support": {
+    "n": 1490,
+    "mean": 1.4483221476510066,
+    "median": 1.0,
+    "min": 1,
+    "max": 7,
+    "n_support_1": 964
+  }
+}
