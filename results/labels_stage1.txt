@@ -1,0 +1,50 @@
+--- FULL (24 recipes)
+    decision points                 5029
+    positives, execution-only       1213  (24.1%)
+    positives, any has_errors       1597  (31.8%)
+    Order Error points (in denom.)  774
+
+    fold        n  pos_exec    rate  pos_any  order
+    1         915       206   0.225      314    183
+    2         386        86   0.223      105     33
+    3         708       184   0.260      231    127
+    4         812       186   0.229      281    172
+    5         517       159   0.308      182     61
+    6         588       127   0.216      173     86
+    7         579       152   0.263      189     87
+    8         524       113   0.216      122     25
+
+    per-tag counts (a point may carry several tags):
+      Order Error            774   -> choice
+      Technique Error        462   -> POS
+      Preparation Error      374   -> POS
+      Measurement Error      327   -> POS
+      Timing Error           161   -> POS
+      Temperature Error       62   -> POS
+      Other                    7   -> other
+      Missing Step             4   -> choice
+
+--- PILOT (5 recipes)
+    decision points                 1063
+    positives, execution-only       242  (22.8%)
+    positives, any has_errors       294  (27.7%)
+    Order Error points (in denom.)  103
+
+    fold        n  pos_exec    rate  pos_any  order
+    1         166        27   0.163       30      4
+    2         110        14   0.127       16      4  <-- thin
+    3         136        32   0.235       39     24
+    4         198        46   0.232       76     44
+    5         143        44   0.308       47      8
+    6          82        20   0.244       26     14  <-- thin
+    7          64        10   0.156       10      0  <-- thin
+    8         164        49   0.299       50      5
+
+    per-tag counts (a point may carry several tags):
+      Technique Error        105   -> POS
+      Order Error            103   -> choice
+      Preparation Error       69   -> POS
+      Measurement Error       55   -> POS
+      Timing Error            32   -> POS
+      Temperature Error       12   -> POS
+      Other                    2   -> other
