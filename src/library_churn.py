@@ -43,10 +43,18 @@ K = 8
 
 
 def norm(s: str) -> str:
-    """Deterministic normalisation: case, whitespace, punctuation. Nothing else."""
+    """Deterministic normalisation: case, whitespace, punctuation.
+
+    Numeric atoms are preserved. Blanket punctuation stripping split '1/2' into
+    '1 2', so the delta between '1 tablespoon' and '1/2 tablespoon' came out as
+    the bare token '2' -- the quantity change, which IS the intervention, was
+    destroyed by normalisation. Fractions, decimals and ranges are therefore
+    matched as single tokens before punctuation is removed from anything else.
+    Still deterministic: no model, no lexicon, no hand-labelling.
+    """
     s = s.lower()
-    s = re.sub(r"[^a-z0-9\s]", " ", s)
-    return " ".join(s.split())
+    toks = re.findall(r"\d+\s*/\s*\d+|\d+\s*-\s*\d+|\d+\.\d+|\d+|[a-z]+", s)
+    return " ".join(t.replace(" ", "") for t in toks)
 
 
 def delta(protocol_text: str, actual_text: str) -> str:
