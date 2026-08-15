@@ -112,7 +112,7 @@
     "recording_id": "1_10",
     "index": 7,
     "y": 0,
-    "p": null,
+    "p": 0.1,
     "cached": false,
     "raw": "Looking at this step"
   },
@@ -185,7 +185,7 @@
     "index": 1,
     "y": 0,
     "p": 0.15,
-    "cached": false,
+    "cached": true,
     "raw": "15"
   },
   {
@@ -212,7 +212,7 @@
     "index": 1,
     "y": 0,
     "p": 0.25,
-    "cached": false,
+    "cached": true,
     "raw": "25"
   },
   {
@@ -221,7 +221,7 @@
     "index": 1,
     "y": 0,
     "p": 0.15,
-    "cached": true,
+    "cached": false,
     "raw": "15"
   },
   {
@@ -337,9 +337,9 @@
     "recording_id": "1_30",
     "index": 7,
     "y": 1,
-    "p": 0.25,
+    "p": 0.1,
     "cached": false,
-    "raw": "25"
+    "raw": "Looking at this step"
   },
   {
     "arm": "D",
@@ -382,9 +382,9 @@
     "recording_id": "1_34",
     "index": 8,
     "y": 1,
-    "p": 0.42,
+    "p": 0.25,
     "cached": false,
-    "raw": "42"
+    "raw": "25"
   },
   {
     "arm": "D",
@@ -868,9 +868,9 @@
     "recording_id": "4_2",
     "index": 9,
     "y": 0,
-    "p": 0.28,
+    "p": 0.25,
     "cached": false,
-    "raw": "28"
+    "raw": "25"
   },
   {
     "arm": "C",
@@ -1049,7 +1049,7 @@
     "index": 1,
     "y": 0,
     "p": 0.25,
-    "cached": false,
+    "cached": true,
     "raw": "25"
   },
   {
@@ -1067,7 +1067,7 @@
     "index": 1,
     "y": 0,
     "p": 0.15,
-    "cached": true,
+    "cached": false,
     "raw": "15"
   },
   {
@@ -1076,7 +1076,7 @@
     "index": 1,
     "y": 0,
     "p": 0.15,
-    "cached": false,
+    "cached": true,
     "raw": "15"
   },
   {
@@ -1282,9 +1282,9 @@
     "recording_id": "4_35",
     "index": 4,
     "y": 0,
-    "p": 0.42,
+    "p": 0.28,
     "cached": false,
-    "raw": "42"
+    "raw": "28"
   },
   {
     "arm": "D",
@@ -1408,9 +1408,9 @@
     "recording_id": "4_44",
     "index": 10,
     "y": 1,
-    "p": 0.25,
+    "p": 0.28,
     "cached": false,
-    "raw": "25"
+    "raw": "28"
   },
   {
     "arm": "C",
@@ -1597,7 +1597,7 @@
     "recording_id": "5_2",
     "index": 13,
     "y": 0,
-    "p": null,
+    "p": 0.61,
     "cached": false,
     "raw": "Looking at this step"
   },
@@ -1606,7 +1606,7 @@
     "recording_id": "5_2",
     "index": 13,
     "y": 0,
-    "p": null,
+    "p": 0.61,
     "cached": false,
     "raw": "Looking at this step"
   },
@@ -1675,6 +1675,15 @@
   },
   {
     "arm": "B",
+    "recording_id": "5_22",
+    "index": 13,
+    "y": 0,
+    "p": 0.35,
+    "cached": false,
+    "raw": "35"
+  },
+  {
+    "arm": "C",
     "recording_id": "5_22",
     "index": 13,
     "y": 0,
@@ -1683,20 +1692,11 @@
     "raw": "42"
   },
   {
-    "arm": "C",
-    "recording_id": "5_22",
-    "index": 13,
-    "y": 0,
-    "p": null,
-    "cached": false,
-    "raw": "Looking at this step"
-  },
-  {
     "arm": "D",
     "recording_id": "5_22",
     "index": 13,
     "y": 0,
-    "p": null,
+    "p": 0.61,
     "cached": false,
     "raw": "Looking at this step"
   },
@@ -1976,7 +1976,7 @@
     "index": 0,
     "y": 0,
     "p": 0.15,
-    "cached": false,
+    "cached": true,
     "raw": "15"
   },
   {
@@ -2047,9 +2047,9 @@
     "recording_id": "7_44",
     "index": 3,
     "y": 1,
-    "p": 0.25,
+    "p": 0.28,
     "cached": false,
-    "raw": "25"
+    "raw": "28"
   },
   {
     "arm": "D",
@@ -2408,7 +2408,7 @@
     "index": 1,
     "y": 0,
     "p": 0.25,
-    "cached": true,
+    "cached": false,
     "raw": "25"
   },
   {
@@ -2426,7 +2426,7 @@
     "index": 1,
     "y": 0,
     "p": 0.15,
-    "cached": false,
+    "cached": true,
     "raw": "15"
   },
   {
@@ -2462,7 +2462,7 @@
     "index": 2,
     "y": 0,
     "p": 0.15,
-    "cached": false,
+    "cached": true,
     "raw": "15"
   },
   {
@@ -2471,7 +2471,7 @@
     "index": 2,
     "y": 0,
     "p": 0.15,
-    "cached": false,
+    "cached": true,
     "raw": "15"
   },
   {
@@ -2498,7 +2498,7 @@
     "index": 1,
     "y": 0,
     "p": 0.25,
-    "cached": true,
+    "cached": false,
     "raw": "25"
   },
   {
@@ -3163,9 +3163,9 @@
     "recording_id": "22_13",
     "index": 12,
     "y": 0,
-    "p": 0.25,
+    "p": 0.28,
     "cached": false,
-    "raw": "25"
+    "raw": "28"
   },
   {
     "arm": "C",
@@ -3181,9 +3181,9 @@
     "recording_id": "22_13",
     "index": 12,
     "y": 0,
-    "p": 0.72,
+    "p": 0.42,
     "cached": false,
-    "raw": "72"
+    "raw": "42"
   },
   {
     "arm": "E",
@@ -3217,9 +3217,9 @@
     "recording_id": "22_21",
     "index": 1,
     "y": 0,
-    "p": 0.25,
+    "p": 0.28,
     "cached": false,
-    "raw": "25"
+    "raw": "28"
   },
   {
     "arm": "D",
@@ -3262,9 +3262,9 @@
     "recording_id": "22_21",
     "index": 8,
     "y": 0,
-    "p": 0.42,
+    "p": 0.25,
     "cached": false,
-    "raw": "42"
+    "raw": "25"
   },
   {
     "arm": "D",
@@ -3352,9 +3352,9 @@
     "recording_id": "22_21",
     "index": 12,
     "y": 0,
-    "p": 0.42,
+    "p": 0.72,
     "cached": false,
-    "raw": "42"
+    "raw": "72"
   },
   {
     "arm": "D",
@@ -3577,9 +3577,9 @@
     "recording_id": "22_41",
     "index": 1,
     "y": 1,
-    "p": 0.25,
+    "p": 0.28,
     "cached": true,
-    "raw": "25"
+    "raw": "28"
   },
   {
     "arm": "D",
@@ -4144,9 +4144,9 @@
     "recording_id": "28_10",
     "index": 15,
     "y": 0,
-    "p": 0.15,
+    "p": 0.25,
     "cached": false,
-    "raw": "15"
+    "raw": "25"
   },
   {
     "arm": "B",

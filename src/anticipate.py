@@ -60,6 +60,7 @@ ARM_LABEL = {"A": "no skill (baseline)", "B": "flat advice",
              "E": "placebo: other recipe (control)"}
 SEED = 7
 MODEL = "claude-haiku-4-5-20251001"
+MAX_TOKENS = 64   # 8 and 24 both truncated prose preambles before any digit
 
 SYSTEM = (
     "You are predicting how a person performs a cooking recipe in a real kitchen. "
@@ -146,12 +147,26 @@ def build_prompt(point, protocol, block):
         remaining=rem)
 
 
-def assert_no_target_leakage(prompt, point, err_lookup):
-    """No outcome string for the TARGET instance may appear in the prompt."""
+def assert_no_target_leakage(prompt, point, err_lookup, protocol_text=""):
+    """No outcome string for the TARGET instance may appear in the prompt.
+
+    One refinement over the naive check. `modified_description` records what the
+    operator actually did, and when they did the step as written it is
+    byte-identical to the protocol text -- which legitimately appears in the
+    prompt, because naming the target step IS the question. Flagging that is a
+    false positive: the informative content in such cases is the error
+    `description` ("Drop the sugar box while taking flour"), which is checked
+    unconditionally below. So a candidate string is skipped only when it is
+    contained in the target's own protocol text, i.e. carries nothing the prompt
+    was not already entitled to show.
+    """
     tokens = err_lookup.get((point.recording_id, point.index), [])
     low = prompt.lower()
+    proto_low = (protocol_text or "").strip().lower()
     for t in tokens:
         t = (t or "").strip().lower()
+        if proto_low and t and t in proto_low:
+            continue        # adds nothing beyond the protocol text already shown
         if len(t) > 12 and t in low:
             raise AssertionError(
                 f"target outcome text leaked into prompt for "
@@ -170,14 +185,14 @@ def parse_prob(text):
 
 
 def call(client, cache, user, max_retries=5):
-    k = hashlib.sha256(f"{MODEL}\x00{SYSTEM}\x00{user}".encode()).hexdigest()
+    k = hashlib.sha256(f"{MODEL}\x00{MAX_TOKENS}\x00{SYSTEM}\x00{user}".encode()).hexdigest()
     hit = cache.get(k)
     if hit is not None:
         return hit, True
     d = 2.0
     for a in range(max_retries):
         try:
-            r = client.messages.create(model=MODEL, max_tokens=24, temperature=0,
+            r = client.messages.create(model=MODEL, max_tokens=MAX_TOKENS, temperature=0,
                                        system=SYSTEM,
                                        messages=[{"role": "user", "content": user}])
             t = r.content[0].text if r.content else ""
@@ -264,7 +279,8 @@ def main(fold=6, workers=12):
                 block = render_block(lib_by_recipe[p.recipe], arm, proto)
             block_tokens[arm].append(len(block.split()))
             u = build_prompt(p, proto, block)
-            assert_no_target_leakage(u, p, err_lookup)
+            assert_no_target_leakage(u, p, err_lookup,
+                                     proto.steps.get(p.target_step_id, ""))
             # arms must be byte-identical outside the skill block
             cut = u.index("PRACTITIONER TIPS") if "PRACTITIONER TIPS" in u else u.index("THE STEP THEY ARE ABOUT")
             residue = u[:cut].rstrip() + "\n" + u[u.index("THE STEP THEY ARE ABOUT"):]
